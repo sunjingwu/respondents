@@ -56,18 +56,53 @@ function insertDiv(change, src, target) {
   }
 
   change.insertBlock({
-    type: 'heading-one',
-    isVoid: true,
-    data: src,
+    type: 'list-item'
   })
 }
 
+
+/**
+ * Toolbar button component.
+ *
+ * @type {Function}
+ */
+
+const ToolbarButton = props => (
+  <span className="button" onMouseDown={props.onMouseDown}>
+    <span className="material-icons">{props.icon}</span>
+  </span>
+)
 
 class Toolbar extends Component{
 
 
   onChange = ({value}) => {
     this.props.editorChange({value});
+  }
+
+
+  /**
+   * On redo in history.
+   *
+   */
+
+  onClickRedo = event => {
+    event.preventDefault()
+    const { value } = this.props.state
+    const change = value.change().redo()
+    this.onChange(change)
+  }
+
+  /**
+   * On undo in history.
+   *
+   */
+
+  onClickUndo = event => {
+    event.preventDefault()
+    const { value } = this.props.state
+    const change = value.change().undo()
+    this.onChange(change)
   }
 
   /**
@@ -189,6 +224,7 @@ class Toolbar extends Component{
 
 
   render() {
+    const { value } = this.props.state
     return (
       <div className="menu toolbar-menu">
         {this.renderMarkButton('bold', 'format_bold')}
@@ -208,6 +244,12 @@ class Toolbar extends Component{
         {this.renderBlockButton('block-quote', 'format_quote')}
         {this.renderBlockButton('numbered-list', 'format_list_numbered')}
         {this.renderBlockButton('bulleted-list', 'format_list_bulleted')}
+
+
+        <ToolbarButton icon="undo" onMouseDown={this.onClickUndo} />
+        <ToolbarButton icon="redo" onMouseDown={this.onClickRedo} />
+        <span className="button">Undos: {value.history.undos.size}</span>
+        <span className="button">Redos: {value.history.redos.size}</span>
       </div>
     )
   }

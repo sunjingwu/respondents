@@ -77,6 +77,223 @@
       },
       {
         "object": "block",
+        "type": "table",
+        "nodes": [
+          {
+            "object": "block",
+            "type": "table-row",
+            "nodes": [
+              {
+                "object": "block",
+                "type": "table-cell",
+                "nodes": [
+                  {
+                    "object": "text",
+                    "leaves": [
+                      {
+                        "text": ""
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "object": "block",
+                "type": "table-cell",
+                "nodes": [
+                  {
+                    "object": "text",
+                    "leaves": [
+                      {
+                        "text": "Human",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "object": "block",
+                "type": "table-cell",
+                "nodes": [
+                  {
+                    "object": "text",
+                    "leaves": [
+                      {
+                        "text": "Dog",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "object": "block",
+                "type": "table-cell",
+                "nodes": [
+                  {
+                    "object": "text",
+                    "leaves": [
+                      {
+                        "text": "Cat",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "object": "block",
+            "type": "table-row",
+            "nodes": [
+              {
+                "object": "block",
+                "type": "table-cell",
+                "nodes": [
+                  {
+                    "object": "text",
+                    "leaves": [
+                      {
+                        "text": "# of Feet",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "object": "block",
+                "type": "table-cell",
+                "nodes": [
+                  {
+                    "object": "text",
+                    "leaves": [
+                      {
+                        "text": "2"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "object": "block",
+                "type": "table-cell",
+                "nodes": [
+                  {
+                    "object": "text",
+                    "leaves": [
+                      {
+                        "text": "4"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "object": "block",
+                "type": "table-cell",
+                "nodes": [
+                  {
+                    "object": "text",
+                    "leaves": [
+                      {
+                        "text": "4"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "object": "block",
+            "type": "table-row",
+            "nodes": [
+              {
+                "object": "block",
+                "type": "table-cell",
+                "nodes": [
+                  {
+                    "object": "text",
+                    "leaves": [
+                      {
+                        "text": "# of Lives",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "object": "block",
+                "type": "table-cell",
+                "nodes": [
+                  {
+                    "object": "text",
+                    "leaves": [
+                      {
+                        "text": "1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "object": "block",
+                "type": "table-cell",
+                "nodes": [
+                  {
+                    "object": "text",
+                    "leaves": [
+                      {
+                        "text": "1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "object": "block",
+                "type": "table-cell",
+                "nodes": [
+                  {
+                    "object": "text",
+                    "leaves": [
+                      {
+                        "text": "9"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "object": "block",
         "type": "block-quote",
         "nodes": [
           {

@@ -9,7 +9,9 @@
     "react-dom": "^16.0.0",
     "react-scripts": "1.0.16",
     "slate": "^0.33.4",
-    "slate-react": "^0.12.4"
+    "slate-collapse-on-escape": "^0.6.0",
+    "slate-react": "^0.12.4",
+    "slate-soft-break": "^0.6.0"
   },
   "scripts": {
     "start": "react-app-rewired start",

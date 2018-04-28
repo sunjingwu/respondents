@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {isKeyHotkey} from 'is-hotkey'
 import {Layout} from 'antd/lib/index'
 import StudyNo from '../elements/StudyNo'
-
+import plugins from './Plugin/Plugin'
 import {Editor} from 'slate-react'
 
 import './Container.css'
@@ -26,6 +26,17 @@ class EditorContainer extends Component{
   renderNode = props => {
     const { attributes, children, node, isSelected } = props
     switch (node.type) {
+      case 'table':
+        return (
+          <table>
+            <tbody {...attributes}>{children}</tbody>
+          </table>
+        )
+      case 'table-row':
+        return <tr {...attributes}>{children}</tr>
+      case 'table-cell':
+        return <td {...attributes}>{children}</td>
+
       case 'block-quote':
         return <blockquote {...attributes}>{children}</blockquote>
       case 'bulleted-list':
@@ -118,6 +129,7 @@ class EditorContainer extends Component{
           value={this.props.state.value}
           onChange={this.onChange}
           onKeyDown={this.onKeyDown}
+          plugins={plugins}
           renderNode={this.renderNode}
           renderMark={this.renderMark}
           spellCheck
