@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class Page extends Component {
+class PaperFace extends Component {
 
 
   render() {
@@ -28,10 +28,7 @@ class Page extends Component {
     )
   }
 
-
-
-
 }
 
 
-export default Page;
+export default PaperFace;

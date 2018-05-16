@@ -1,13 +1,10 @@
 import React, {Component} from 'react'
 import {isKeyHotkey} from 'is-hotkey'
 import {Layout} from 'antd/lib/index'
-import StudyNo from '../elements/StudyNo'
-import plugins from './Plugin/Plugin'
+import StudyNo from '../elements/studyNo'
+import plugins from './Plugin/plugin'
 import {Editor} from 'slate-react'
-
-import Page from "../elements/Page";
-
-import './Container.css'
+import PaperFace from "../elements/paperFace";
 
 const {Content} = Layout;
 const isBoldHotkey = isKeyHotkey('mod+b')
@@ -42,7 +39,8 @@ class EditorContainer extends Component{
       case 'block-quote':
         return <blockquote {...attributes}>{children}</blockquote>
       case 'bulleted-list':
-        return <ul {...attributes}>{children}</ul>
+        const ulStyle = { "listStyle": "disc"}
+        return <ul style={ulStyle} {...attributes}>{children}</ul>
       case 'heading-one':
         const titleStyle = {
           textAlign: "center"
@@ -53,7 +51,8 @@ class EditorContainer extends Component{
       case 'list-item':
         return <li {...attributes}>{children}</li>
       case 'numbered-list':
-        return <ol {...attributes}>{children}</ol>
+        const olStyle = { "listStyle": "decimal"}
+        return <ol style={olStyle} {...attributes}>{children}</ol>
       case 'image': {
         const src = node.data.get('src')
         const className = isSelected ? 'active' : null
@@ -65,7 +64,7 @@ class EditorContainer extends Component{
       case 'studyNo':
         return <StudyNo {...props}/>
       case 'page':
-        return <Page {...props} >{children}</Page>
+        return <PaperFace {...props} >{children}</PaperFace>
     }
   }
 
@@ -126,8 +125,14 @@ class EditorContainer extends Component{
 
 
   render() {
+
+    const containerStyle = {
+      "backgroundColor": "rgba(154, 154, 154, 0.33)",
+      "margin": "0"
+    }
+
     return (
-      <Content className="container">
+      <Content className="container" style={containerStyle}>
         <Editor
           placeholder="Enter some rich text..."
           value={this.props.state.value}

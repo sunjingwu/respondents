@@ -7,7 +7,7 @@ import {Layout} from 'antd';
 import './App.css';
 import defaultValue from './asset/value.json'
 import EditorContainer from "./components/EditorContainer";
-import Toolbar from "./components/Toolbar";
+import Toolbar from "./components/toolbar";
 
 const {Header, Sider} = Layout;
 
@@ -23,6 +23,8 @@ class App extends Component {
    */
 
   state = {
+    asDesc: {sheetId: "111111"},
+    //location: {paperName: "名称是什么东西"},
     value: value,
   }
 

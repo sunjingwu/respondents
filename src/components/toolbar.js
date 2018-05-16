@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import imageExtensions from 'image-extensions'
 import Html from 'slate-html-serializer'
 
-import './Toolbar.css'
+import './toolbar.css'
 import rules from './schemas/rules'
 
 const html = new Html({ rules })
@@ -66,10 +66,14 @@ const ToolbarButton = props => (
 
 class Toolbar extends Component{
 
+  constructor(props) {
+    super(props);
+    this.state = this.props.state;
+  }
+
   onChange = ({value}) => {
     this.props.editorChange({value});
   }
-
 
   /**
    * On redo in history.
@@ -78,7 +82,7 @@ class Toolbar extends Component{
 
   onClickRedo = event => {
     event.preventDefault()
-    const { value } = this.props.state
+    const { value } = this.state
     const change = value.change().redo()
     this.onChange(change)
   }
@@ -90,7 +94,7 @@ class Toolbar extends Component{
 
   onClickUndo = event => {
     event.preventDefault()
-    const { value } = this.props.state
+    const { value } = this.state
     const change = value.change().undo()
     this.onChange(change)
   }
@@ -104,7 +108,7 @@ class Toolbar extends Component{
 
   onClickMark = (event, type) => {
     event.preventDefault()
-    const { value } = this.props.state
+    const { value } = this.state
     const change = value.change().toggleMark(type)
     this.onChange(change)
   }
@@ -118,7 +122,7 @@ class Toolbar extends Component{
 
   onClickBlock = (event, type) => {
     event.preventDefault()
-    const { value } = this.props.state
+    const { value } = this.state
     const change = value.change()
     const { document } = value
 
@@ -173,7 +177,7 @@ class Toolbar extends Component{
     const src = window.prompt('Enter the URL of the image:')
     if (!src) return
 
-    const change = this.props.state.value.change().call(insertImage, src)
+    const change = this.state.value.change().call(insertImage, src)
 
     this.onChange(change)
   }
@@ -202,9 +206,15 @@ class Toolbar extends Component{
     //TODO 获取所有元素，获取对应位置信息
     for(let i = 0; i < pageLength; i++){
       const pg = pages[i];
-      const studentNo = pg.getElementsByClassName("studyNo");
+      const studyNo = pg.getElementsByClassName("studyNo");
     }
 
+
+    this.state.location;
+    this.state.asDesc;
+
+
+    alert("保存成功！")
   }
 
   /**
@@ -215,7 +225,7 @@ class Toolbar extends Component{
    */
 
   hasMark = type => {
-    const { value } = this.props.state
+    const { value } = this.state
     return value.activeMarks.some(mark => mark.type == type)
   }
 
@@ -227,13 +237,13 @@ class Toolbar extends Component{
    */
 
   hasBlock = type => {
-    const { value } = this.props.state
+    const { value } = this.state
     return value.blocks.some(node => node.type == type)
   }
 
 
   render() {
-    const { value } = this.props.state
+    const { value } = this.state
     return (
       <div className="menu toolbar-menu">
         {this.renderMarkButton('bold', 'format_bold')}
@@ -320,7 +330,7 @@ class Toolbar extends Component{
   renderSaveButton = () => {
     return (
       <div className="menu toolbar-menu">
-        <span className="button" onMouseDown={this.onClickSave.bind(this,this.props.state.value)}>
+        <span className="button" onMouseDown={this.onClickSave.bind(this,this.state.value)}>
           <span className="material-icons">save</span>
         </span>
       </div>

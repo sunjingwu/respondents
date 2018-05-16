@@ -1,9 +1,9 @@
 
 import React from 'react'
 import CollapseOnEscape from 'slate-collapse-on-escape'
-import LocatePoint from "../../elements/LocatePoint";
-import PageHeader from "./PageHeader";
-import PageFooter from "./PageFooter";
+import LocatePoint from "../../elements/locatePoint";
+import PageHeader from "./pageHeader";
+import PageFooter from "./pageFooter";
 
 
 
