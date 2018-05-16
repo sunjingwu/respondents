@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^2.13.8",
+    "antd": "^3.5.2",
     "image-extensions": "^1.1.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-scripts": "1.0.16",
     "slate": "^0.33.4",
     "slate-collapse-on-escape": "^0.6.0",
+    "slate-plain-serializer": "^0.5.12",
     "slate-react": "^0.12.4",
     "slate-soft-break": "^0.6.0"
   },

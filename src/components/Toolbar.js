@@ -56,7 +56,8 @@ function insertDiv(change, src, target) {
   }
 
   change.insertBlock({
-    type: 'list-item'
+    isVoid: true,
+    type: 'study-no'
   })
 }
 
@@ -233,11 +234,8 @@ class Toolbar extends Component{
         {this.renderMarkButton('strikethrough', 'format_strikethrough')}
         {this.renderMarkButton('code', 'code')}
 
-        {this.renderBlockButton('my-type', 'bookmark')}
-
         {this.renderImgButton()}
         {this.renderDivButton()}
-
 
         {this.renderBlockButton('heading-one', 'looks_one')}
         {this.renderBlockButton('heading-two', 'looks_two')}

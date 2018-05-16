@@ -1,7 +1,7 @@
 
 import React from 'react'
 import CollapseOnEscape from 'slate-collapse-on-escape'
-import SoftBreak from 'slate-soft-break'
+import LocatePoint from "../../elements/locatepoint";
 
 
 
@@ -12,18 +12,15 @@ import SoftBreak from 'slate-soft-break'
  * @return {Object}
  */
 
-function WordCount(options) {
+function GenLocatePoint(options) {
   return {
-    renderEditor(props) {
-      return (
-        <div>
-          <div>{props.children}</div>
-          <span className="word-counter">
-            Word Count: {props.value.document.text.split(' ').length}
-          </span>
-        </div>
-      )
-    },
+    renderNode(props) {
+      const { children, node} = props
+      switch (node.type) {
+        case 'locatePoint':
+          return <LocatePoint {...props} >{children}</LocatePoint>
+      }
+    }
   }
 }
 
@@ -31,6 +28,6 @@ function WordCount(options) {
  * Plugins.
  */
 
-const plugins = [CollapseOnEscape(), SoftBreak(), WordCount()]
+const plugins = [CollapseOnEscape(), GenLocatePoint()]
 
 export default plugins;

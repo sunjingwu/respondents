@@ -4,16 +4,16 @@ import {Value} from 'slate'
 
 import {Layout} from 'antd';
 
-
 import './App.css';
-import initialValue from './asset/value.json'
+import defaultValue from './asset/value.json'
 import EditorContainer from "./components/EditorContainer";
 import Toolbar from "./components/Toolbar";
 
 const {Header, Sider} = Layout;
 
+const existingValue = localStorage.getItem('content')
+const initialValue = existingValue || defaultValue
 const value = Value.fromJSON(initialValue);
-
 
 class App extends Component {
   /**
@@ -28,6 +28,11 @@ class App extends Component {
 
   // On change, update the app's React state with the new editor value.
   onChange = ({value}) => {
+
+    /*if (value.document != this.state.value.document) {
+      localStorage.setItem('content', value)
+    }*/
+
     this.setState({value})
   }
 
@@ -50,7 +55,6 @@ class App extends Component {
 
             <Sider>Sider</Sider>
           </Layout>
-          {/*<Footer>Footer</Footer>*/}
         </Layout>
       </div>
     )

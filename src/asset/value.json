@@ -3,112 +3,277 @@
     "nodes": [
       {
         "object": "block",
-        "type": "paragraph",
-        "nodes": [
-          {
-            "object": "text",
-            "leaves": [
-              {
-                "text": "This is editable "
-              },
-              {
-                "text": "rich",
-                "marks": [
-                  {
-                    "type": "bold"
-                  }
-                ]
-              },
-              {
-                "text": " text, "
-              },
-              {
-                "text": "much",
-                "marks": [
-                  {
-                    "type": "italic"
-                  }
-                ]
-              },
-              {
-                "text": " better than a "
-              },
-              {
-                "text": "<textarea>",
-                "marks": [
-                  {
-                    "type": "code"
-                  }
-                ]
-              },
-              {
-                "text": "!"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "object": "block",
-        "type": "paragraph",
-        "nodes": [
-          {
-            "object": "text",
-            "leaves": [
-              {
-                "text":
-                  "Since it's rich text, you can do things like turn a selection of text "
-              },
-              {
-                "text": "bold",
-                "marks": [
-                  {
-                    "type": "bold"
-                  }
-                ]
-              },
-              {
-                "text":
-                  ", or add a semantically rendered block quote in the middle of the page, like this:"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "object": "block",
-        "type": "table",
+        "type": "page",
+        "data": {
+          "pageIndex":1,
+          "pageType":"A4",
+          "pageWidth":"210mm",
+          "pageHeight":"297mm",
+          "pageMargin":["20mm 15mm"]
+        },
         "nodes": [
           {
             "object": "block",
-            "type": "table-row",
+            "type": "pageHeader",
+            "nodes": [
+              {
+                "object": "text",
+                "leaves": [
+                  {
+                    "text": "pageHeader A wise quote."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "object": "block",
+            "type": "pageFooter",
+            "nodes": [
+              {
+                "object": "text",
+                "leaves": [
+                  {
+                    "text": "pageFooter A wise quote."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "object": "block",
+            "type": "locatePoint",
+            "data": {
+              "index": 1,
+              "position": {
+                "top":"10mm",
+                "left":"5mm",
+                "width": "5mm",
+                "height": "5mm"
+              }
+            }
+          },
+          {
+            "object": "block",
+            "type": "paragraph",
+            "nodes": [
+              {
+                "object": "text",
+                "leaves": [
+                  {
+                    "text": "This is editable "
+                  },
+                  {
+                    "text": "rich",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "text": " text, "
+                  },
+                  {
+                    "text": "much",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  },
+                  {
+                    "text": " better than a "
+                  },
+                  {
+                    "text": "<textarea>",
+                    "marks": [
+                      {
+                        "type": "code"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "!"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "object": "block",
+        "type": "page",
+        "data": {
+          "pageIndex":1,
+          "pageType":"A4",
+          "pageWidth":"210mm",
+          "pageHeight":"297mm",
+          "pageMargin":["20mm 15mm"]
+        },
+        "nodes": [
+          {
+            "object": "block",
+            "type": "locatePoint",
+            "data": {
+              "index": 1,
+              "position": {
+                "top": "10mm",
+                "left": "5mm",
+                "width": "5mm",
+                "height": "5mm"
+              }
+            }
+          },
+          {
+            "object": "block",
+            "type": "paragraph",
+            "nodes": [
+              {
+                "object": "text",
+                "leaves": [
+                  {
+                    "text": "This is editable "
+                  },
+                  {
+                    "text": "rich",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "text": " text, "
+                  },
+                  {
+                    "text": "much",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ]
+                  },
+                  {
+                    "text": " better than a "
+                  },
+                  {
+                    "text": "<textarea>",
+                    "marks": [
+                      {
+                        "type": "code"
+                      }
+                    ]
+                  },
+                  {
+                    "text": "!"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "object": "block",
+            "type": "paragraph",
+            "nodes": [
+              {
+                "object": "text",
+                "leaves": [
+                  {
+                    "text":
+                    "Since it's rich text, you can do things like turn a selection of text "
+                  },
+                  {
+                    "text": "bold",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "text":
+                    ", or add a semantically rendered block quote in the middle of the page, like this:"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "object": "block",
+            "type": "table",
             "nodes": [
               {
                 "object": "block",
-                "type": "table-cell",
+                "type": "table-row",
                 "nodes": [
                   {
-                    "object": "text",
-                    "leaves": [
+                    "object": "block",
+                    "type": "table-cell",
+                    "nodes": [
                       {
-                        "text": ""
+                        "object": "text",
+                        "leaves": [
+                          {
+                            "text": ""
+                          }
+                        ]
                       }
                     ]
-                  }
-                ]
-              },
-              {
-                "object": "block",
-                "type": "table-cell",
-                "nodes": [
+                  },
                   {
-                    "object": "text",
-                    "leaves": [
+                    "object": "block",
+                    "type": "table-cell",
+                    "nodes": [
                       {
-                        "text": "Human",
-                        "marks": [
+                        "object": "text",
+                        "leaves": [
                           {
-                            "type": "bold"
+                            "text": "Human",
+                            "marks": [
+                              {
+                                "type": "bold"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "object": "block",
+                    "type": "table-cell",
+                    "nodes": [
+                      {
+                        "object": "text",
+                        "leaves": [
+                          {
+                            "text": "Dog",
+                            "marks": [
+                              {
+                                "type": "bold"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "object": "block",
+                    "type": "table-cell",
+                    "nodes": [
+                      {
+                        "object": "text",
+                        "leaves": [
+                          {
+                            "text": "Cat",
+                            "marks": [
+                              {
+                                "type": "bold"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -118,16 +283,64 @@
               },
               {
                 "object": "block",
-                "type": "table-cell",
+                "type": "table-row",
                 "nodes": [
                   {
-                    "object": "text",
-                    "leaves": [
+                    "object": "block",
+                    "type": "table-cell",
+                    "nodes": [
                       {
-                        "text": "Dog",
-                        "marks": [
+                        "object": "text",
+                        "leaves": [
                           {
-                            "type": "bold"
+                            "text": "# of Feet",
+                            "marks": [
+                              {
+                                "type": "bold"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "object": "block",
+                    "type": "table-cell",
+                    "nodes": [
+                      {
+                        "object": "text",
+                        "leaves": [
+                          {
+                            "text": "2"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "object": "block",
+                    "type": "table-cell",
+                    "nodes": [
+                      {
+                        "object": "text",
+                        "leaves": [
+                          {
+                            "text": "4"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "object": "block",
+                    "type": "table-cell",
+                    "nodes": [
+                      {
+                        "object": "text",
+                        "leaves": [
+                          {
+                            "text": "4"
                           }
                         ]
                       }
@@ -137,16 +350,64 @@
               },
               {
                 "object": "block",
-                "type": "table-cell",
+                "type": "table-row",
                 "nodes": [
                   {
-                    "object": "text",
-                    "leaves": [
+                    "object": "block",
+                    "type": "table-cell",
+                    "nodes": [
                       {
-                        "text": "Cat",
-                        "marks": [
+                        "object": "text",
+                        "leaves": [
                           {
-                            "type": "bold"
+                            "text": "# of Lives",
+                            "marks": [
+                              {
+                                "type": "bold"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "object": "block",
+                    "type": "table-cell",
+                    "nodes": [
+                      {
+                        "object": "text",
+                        "leaves": [
+                          {
+                            "text": "1"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "object": "block",
+                    "type": "table-cell",
+                    "nodes": [
+                      {
+                        "object": "text",
+                        "leaves": [
+                          {
+                            "text": "1"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "object": "block",
+                    "type": "table-cell",
+                    "nodes": [
+                      {
+                        "object": "text",
+                        "leaves": [
+                          {
+                            "text": "9"
                           }
                         ]
                       }
@@ -158,66 +419,13 @@
           },
           {
             "object": "block",
-            "type": "table-row",
+            "type": "block-quote",
             "nodes": [
               {
-                "object": "block",
-                "type": "table-cell",
-                "nodes": [
+                "object": "text",
+                "leaves": [
                   {
-                    "object": "text",
-                    "leaves": [
-                      {
-                        "text": "# of Feet",
-                        "marks": [
-                          {
-                            "type": "bold"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "object": "block",
-                "type": "table-cell",
-                "nodes": [
-                  {
-                    "object": "text",
-                    "leaves": [
-                      {
-                        "text": "2"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "object": "block",
-                "type": "table-cell",
-                "nodes": [
-                  {
-                    "object": "text",
-                    "leaves": [
-                      {
-                        "text": "4"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "object": "block",
-                "type": "table-cell",
-                "nodes": [
-                  {
-                    "object": "text",
-                    "leaves": [
-                      {
-                        "text": "4"
-                      }
-                    ]
+                    "text": "A wise quote."
                   }
                 ]
               }
@@ -225,96 +433,15 @@
           },
           {
             "object": "block",
-            "type": "table-row",
+            "type": "paragraph",
             "nodes": [
               {
-                "object": "block",
-                "type": "table-cell",
-                "nodes": [
+                "object": "text",
+                "leaves": [
                   {
-                    "object": "text",
-                    "leaves": [
-                      {
-                        "text": "# of Lives",
-                        "marks": [
-                          {
-                            "type": "bold"
-                          }
-                        ]
-                      }
-                    ]
+                    "text": "Try it out for yourself!"
                   }
                 ]
-              },
-              {
-                "object": "block",
-                "type": "table-cell",
-                "nodes": [
-                  {
-                    "object": "text",
-                    "leaves": [
-                      {
-                        "text": "1"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "object": "block",
-                "type": "table-cell",
-                "nodes": [
-                  {
-                    "object": "text",
-                    "leaves": [
-                      {
-                        "text": "1"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "object": "block",
-                "type": "table-cell",
-                "nodes": [
-                  {
-                    "object": "text",
-                    "leaves": [
-                      {
-                        "text": "9"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "object": "block",
-        "type": "block-quote",
-        "nodes": [
-          {
-            "object": "text",
-            "leaves": [
-              {
-                "text": "A wise quote."
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "object": "block",
-        "type": "paragraph",
-        "nodes": [
-          {
-            "object": "text",
-            "leaves": [
-              {
-                "text": "Try it out for yourself!"
               }
             ]
           }

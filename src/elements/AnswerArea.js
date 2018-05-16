@@ -6,7 +6,8 @@ class StudyNo extends Component {
 
   render() {
 
-    const count = 8;
+    //作答区高度
+    const height = 8;
 
     const tableStyle = {
       borderCollapse: 'collapse',

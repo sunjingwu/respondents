@@ -5,6 +5,8 @@ import StudyNo from '../elements/StudyNo'
 import plugins from './Plugin/Plugin'
 import {Editor} from 'slate-react'
 
+import Page from "../elements/page";
+
 import './Container.css'
 
 const {Content} = Layout;
@@ -57,11 +59,10 @@ class EditorContainer extends Component{
           <img src={src} className={className} style={style} {...attributes} />
         )
       }
-      case 'div':{
-        return <div>{children}</div>
-      }
-      case 'my-type':
-        return <StudyNo>{children}</StudyNo>
+      case 'study-no':
+        return <StudyNo {...props}/>
+      case 'page':
+        return <Page {...props} >{children}</Page>
     }
   }
 
