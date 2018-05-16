@@ -28,22 +28,9 @@
           },
           {
             "object": "block",
-            "type": "pageFooter",
-            "nodes": [
-              {
-                "object": "text",
-                "leaves": [
-                  {
-                    "text": "pageFooter A wise quote."
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "object": "block",
             "type": "locatePoint",
             "data": {
+
               "index": 1,
               "position": {
                 "top":"10mm",
@@ -52,6 +39,16 @@
                 "height": "5mm"
               }
             }
+          },
+          {
+            "object": "block",
+            "type": "studyNo",
+            "isVoid": true,
+            "data": {
+              "count":8
+            },
+            "nodes": [
+            ]
           },
           {
             "object": "block",
@@ -95,6 +92,20 @@
                   },
                   {
                     "text": "!"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "object": "block",
+            "type": "pageFooter",
+            "nodes": [
+              {
+                "object": "text",
+                "leaves": [
+                  {
+                    "text": "pageFooter A wise quote."
                   }
                 ]
               }

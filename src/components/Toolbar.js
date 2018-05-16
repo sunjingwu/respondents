@@ -49,19 +49,6 @@ function insertImage(change, src, target) {
   })
 }
 
-
-function insertDiv(change, src, target) {
-  if (target) {
-    change.select(target)
-  }
-
-  change.insertBlock({
-    isVoid: true,
-    type: 'study-no'
-  })
-}
-
-
 /**
  * Toolbar button component.
  *
@@ -189,16 +176,6 @@ class Toolbar extends Component{
     this.onChange(change)
   }
 
-
-  onClickDiv = event => {
-    event.preventDefault()
-
-
-    const change = this.props.state.value.change().call(insertDiv, 'a')
-
-    this.onChange(change)
-  }
-
   /**
    * Check if the current selection has a mark with `type` in it.
    *
@@ -235,7 +212,6 @@ class Toolbar extends Component{
         {this.renderMarkButton('code', 'code')}
 
         {this.renderImgButton()}
-        {this.renderDivButton()}
 
         {this.renderBlockButton('heading-one', 'looks_one')}
         {this.renderBlockButton('heading-two', 'looks_two')}
@@ -309,15 +285,6 @@ class Toolbar extends Component{
     )
   }
 
-  renderDivButton = () => {
-    return (
-      <div className="menu toolbar-menu">
-        <span className="button" onMouseDown={this.onClickDiv}>
-          <span className="material-icons">image</span>
-        </span>
-      </div>
-    )
-  }
 }
 
 export default Toolbar;

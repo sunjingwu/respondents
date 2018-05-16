@@ -8,7 +8,7 @@ export default function PageHeader(options) {
     renderNode(props) {
       const { children, node} = props
       switch (node.type) {
-        case 'locatePoint':
+        case 'pageHeader':
           return <LocatePoint {...props} >{children}</LocatePoint>
       }
     }

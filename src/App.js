@@ -11,7 +11,7 @@ import Toolbar from "./components/Toolbar";
 
 const {Header, Sider} = Layout;
 
-const existingValue = localStorage.getItem('content')
+const existingValue = JSON.parse(localStorage.getItem('content'))
 const initialValue = existingValue || defaultValue
 const value = Value.fromJSON(initialValue);
 
@@ -30,7 +30,8 @@ class App extends Component {
   onChange = ({value}) => {
 
     /*if (value.document != this.state.value.document) {
-      localStorage.setItem('content', value)
+      const content = JSON.stringify(value.toJSON())
+      localStorage.setItem('content', content)
     }*/
 
     this.setState({value})

@@ -5,7 +5,7 @@ import StudyNo from '../elements/StudyNo'
 import plugins from './Plugin/Plugin'
 import {Editor} from 'slate-react'
 
-import Page from "../elements/page";
+import Page from "../elements/Page";
 
 import './Container.css'
 
@@ -59,7 +59,7 @@ class EditorContainer extends Component{
           <img src={src} className={className} style={style} {...attributes} />
         )
       }
-      case 'study-no':
+      case 'studyNo':
         return <StudyNo {...props}/>
       case 'page':
         return <Page {...props} >{children}</Page>
