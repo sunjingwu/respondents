@@ -28,9 +28,22 @@
           },
           {
             "object": "block",
+            "type": "heading-one",
+            "nodes": [
+              {
+                "object": "text",
+                "leaves": [
+                  {
+                    "text": "pageHeader A wise quote."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "object": "block",
             "type": "locatePoint",
             "data": {
-
               "index": 1,
               "position": {
                 "top":"10mm",
@@ -43,9 +56,8 @@
           {
             "object": "block",
             "type": "studyNo",
-            "isVoid": true,
             "data": {
-              "count":8
+              "count":4
             },
             "nodes": [
             ]

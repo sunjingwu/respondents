@@ -2,6 +2,8 @@
 import React from 'react'
 import CollapseOnEscape from 'slate-collapse-on-escape'
 import LocatePoint from "../../elements/LocatePoint";
+import PageHeader from "./PageHeader";
+import PageFooter from "./PageFooter";
 
 
 
@@ -28,6 +30,6 @@ function GenLocatePoint(options) {
  * Plugins.
  */
 
-const plugins = [CollapseOnEscape(), GenLocatePoint()]
+const plugins = [CollapseOnEscape(), GenLocatePoint(), PageHeader(), PageFooter()]
 
 export default plugins;

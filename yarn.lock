@@ -6889,6 +6889,13 @@ slate-dev-logger@^0.1.39:
   version "0.1.39"
   resolved "http://registry.npm.taobao.org/slate-dev-logger/download/slate-dev-logger-0.1.39.tgz#744a69b85034244713e6de51483af5713c345af4"
 
+slate-html-serializer@^0.6.3:
+  version "0.6.3"
+  resolved "http://registry.npm.taobao.org/slate-html-serializer/download/slate-html-serializer-0.6.3.tgz#dba47103937199180c6d89585d20b7d83037b838"
+  dependencies:
+    slate-dev-logger "^0.1.39"
+    type-of "^2.0.1"
+
 slate-plain-serializer@^0.5.10:
   version "0.5.10"
   resolved "http://registry.npm.taobao.org/slate-plain-serializer/download/slate-plain-serializer-0.5.10.tgz#0a430824485f3dd4c7bf5bcae1bae37f13741c5c"

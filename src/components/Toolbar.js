@@ -1,9 +1,12 @@
-
 import React, {Component} from 'react';
 
 import imageExtensions from 'image-extensions'
+import Html from 'slate-html-serializer'
 
 import './Toolbar.css'
+import rules from './schemas/rules'
+
+const html = new Html({ rules })
 /**
  * Define the default node type.
  *
@@ -62,7 +65,6 @@ const ToolbarButton = props => (
 )
 
 class Toolbar extends Component{
-
 
   onChange = ({value}) => {
     this.props.editorChange({value});
@@ -176,6 +178,35 @@ class Toolbar extends Component{
     this.onChange(change)
   }
 
+
+  onClickSave = (value,event) => {
+
+    const content = JSON.stringify(value.toJSON())
+    localStorage.setItem('content', content)
+
+
+    /* 获取页面上的html
+    const string = html.serialize(value)
+    localStorage.setItem('html', string)*/
+
+    let htmlStr = "";
+    const pages = document.getElementsByClassName("page");
+    let pageLength = pages.length;
+    for(let i = 0; i < pageLength; i++){
+      htmlStr += pages[i].outerHTML;
+    }
+
+    //添加HTML文档头部
+    localStorage.setItem('html', htmlStr)
+
+    //TODO 获取所有元素，获取对应位置信息
+    for(let i = 0; i < pageLength; i++){
+      const pg = pages[i];
+      const studentNo = pg.getElementsByClassName("studyNo");
+    }
+
+  }
+
   /**
    * Check if the current selection has a mark with `type` in it.
    *
@@ -212,6 +243,7 @@ class Toolbar extends Component{
         {this.renderMarkButton('code', 'code')}
 
         {this.renderImgButton()}
+        {this.renderSaveButton()}
 
         {this.renderBlockButton('heading-one', 'looks_one')}
         {this.renderBlockButton('heading-two', 'looks_two')}
@@ -280,6 +312,16 @@ class Toolbar extends Component{
       <div className="menu toolbar-menu">
         <span className="button" onMouseDown={this.onClickImage}>
           <span className="material-icons">image</span>
+        </span>
+      </div>
+    )
+  }
+
+  renderSaveButton = () => {
+    return (
+      <div className="menu toolbar-menu">
+        <span className="button" onMouseDown={this.onClickSave.bind(this,this.props.state.value)}>
+          <span className="material-icons">save</span>
         </span>
       </div>
     )

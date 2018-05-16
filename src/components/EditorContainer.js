@@ -44,7 +44,10 @@ class EditorContainer extends Component{
       case 'bulleted-list':
         return <ul {...attributes}>{children}</ul>
       case 'heading-one':
-        return <h1 {...attributes}>{children}</h1>
+        const titleStyle = {
+          textAlign: "center"
+        }
+        return <h1 style={titleStyle} {...attributes}>{children}</h1>
       case 'heading-two':
         return <h2 {...attributes}>{children}</h2>
       case 'list-item':

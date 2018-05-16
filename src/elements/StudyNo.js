@@ -5,8 +5,8 @@ class StudyNo extends Component {
 
 
   render() {
-
-    const count = 8;
+    const { node } = this.props
+    const count = node.data.get('count')
 
     const tableStyle = {
       borderCollapse: 'collapse',
