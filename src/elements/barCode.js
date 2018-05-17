@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 
-class StudyNo extends Component {
+class BarCode extends Component {
 
 
   render() {
@@ -22,7 +22,7 @@ class StudyNo extends Component {
     }
 
     return (
-      <div contentEditable={false} className="studyNo" {...this.props.attributes}>
+      <div className="studyNo" {...this.props.attributes}>
         <table style={tableStyle} cellPadding="0" cellSpacing="0">
           <tbody>
           <tr height="6mm">
@@ -33,6 +33,7 @@ class StudyNo extends Component {
           {this.renderNo(count)}
           </tbody>
         </table>
+
       </div>
     )
   }
@@ -87,4 +88,4 @@ class StudyNo extends Component {
   }
 }
 
-export default StudyNo;
+export default BarCode;

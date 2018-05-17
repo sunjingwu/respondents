@@ -1,5 +1,6 @@
 {
   "document": {
+    "data": {},
     "nodes": [
       {
         "object": "block",
@@ -42,16 +43,7 @@
           },
           {
             "object": "block",
-            "type": "locatePoint",
-            "data": {
-              "index": 1,
-              "position": {
-                "top":"10mm",
-                "left":"5mm",
-                "width": "5mm",
-                "height": "5mm"
-              }
-            }
+            "type": "locatePoint"
           },
           {
             "object": "block",

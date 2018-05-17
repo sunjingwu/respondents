@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 
+
+/**
+ * 页面，指一张纸的一面
+ */
 class PaperFace extends Component {
 
 
@@ -19,9 +23,7 @@ class PaperFace extends Component {
     }
 
     return (
-
       <div className="page" style={pageStyle} {...this.props.attributes}>
-
         {this.props.children}
       </div>
 

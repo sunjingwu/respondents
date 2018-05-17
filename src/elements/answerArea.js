@@ -1,19 +1,16 @@
 import React, {Component} from 'react';
 
 
-class StudyNo extends Component {
+/**
+ * 作答区
+ */
+class AnswerArea extends Component {
 
 
   render() {
 
     //作答区高度
     const height = 8;
-
-    const tableStyle = {
-      borderCollapse: 'collapse',
-      textAlign: 'center',
-      lineHeight: '5mm'
-    }
 
     const titleStyle = {
       width: '30mm',
@@ -23,35 +20,11 @@ class StudyNo extends Component {
     }
 
     return (
-      <div className="studyNo" {...this.props.attributes}>
-        <table style={tableStyle} cellPadding="0" cellSpacing="0">
-          <tbody>
-          <tr height="6mm">
-            <td colSpan={count} style={titleStyle}>准考证号
-            </td>
-          </tr>
-          {this.renderFill(count)}
-          {this.renderNo(count)}
-          </tbody>
-        </table>
+      <div className="answerArea" {...this.props.attributes}>
+
 
       </div>
     )
-  }
-
-
-  renderFill = (count) => {
-
-    const thStyle = {
-      border: 'solid 1px #000000',
-      borderCollapse: 'collapse',
-    }
-
-    var rows = [];
-    for (var i = 0; i < count; i++) {
-      rows.push(<th key={i} style={thStyle}>&nbsp;</th>);
-    }
-    return <tr height="6mm">{rows}</tr>;
   }
 
 
@@ -85,8 +58,7 @@ class StudyNo extends Component {
       </td>);
     }
     return <tr>{rows}</tr>;
-    ;
   }
 }
 
-export default StudyNo;
+export default AnswerArea;

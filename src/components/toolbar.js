@@ -4,7 +4,7 @@ import imageExtensions from 'image-extensions'
 import Html from 'slate-html-serializer'
 
 import './toolbar.css'
-import rules from './schemas/rules'
+import rules from '../schemas/rules'
 
 const html = new Html({ rules })
 /**
@@ -211,7 +211,6 @@ class Toolbar extends Component{
 
 
     this.state.location;
-    this.state.asDesc;
 
 
     alert("保存成功！")

@@ -2,9 +2,10 @@ import React, {Component} from 'react'
 import {isKeyHotkey} from 'is-hotkey'
 import {Layout} from 'antd/lib/index'
 import StudyNo from '../elements/studyNo'
-import plugins from './Plugin/plugin'
+import plugins from '../plugins/plugin'
 import {Editor} from 'slate-react'
 import PaperFace from "../elements/paperFace";
+import LocatePoint from "../elements/locatePoint";
 
 const {Content} = Layout;
 const isBoldHotkey = isKeyHotkey('mod+b')
@@ -35,7 +36,6 @@ class EditorContainer extends Component{
         return <tr {...attributes}>{children}</tr>
       case 'table-cell':
         return <td {...attributes}>{children}</td>
-
       case 'block-quote':
         return <blockquote {...attributes}>{children}</blockquote>
       case 'bulleted-list':
@@ -65,6 +65,24 @@ class EditorContainer extends Component{
         return <StudyNo {...props}/>
       case 'page':
         return <PaperFace {...props} >{children}</PaperFace>
+      case 'pageHeader':
+        const headStyle = {
+          top:'0',
+          position: 'absolute'
+        }
+        return (
+          <div className="pageHeader" style={headStyle}>{children}</div>
+        )
+      case 'pageFooter':
+        const footStyle = {
+          bottom:'0',
+          position: 'absolute'
+        }
+        return (
+          <div className="pageFooter" style={footStyle}>{children}</div>
+        )
+      case 'locatePoint':
+        return <LocatePoint {...props} >{children}</LocatePoint>
     }
   }
 

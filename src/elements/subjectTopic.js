@@ -6,7 +6,7 @@ import React from 'react'
  * @type {Component}
  */
 
-class Subject extends React.Component {
+class SubjectTopic extends React.Component {
 
   /**
    * Render.
@@ -77,4 +77,4 @@ class Subject extends React.Component {
  * Export.
  */
 
-export default Video
+export default SubjectTopic

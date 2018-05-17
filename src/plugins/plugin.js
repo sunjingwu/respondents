@@ -1,17 +1,13 @@
-
 import React from 'react'
 import CollapseOnEscape from 'slate-collapse-on-escape'
-import LocatePoint from "../../elements/locatePoint";
+import LocatePoint from "../elements/locatePoint";
 import PageHeader from "./pageHeader";
 import PageFooter from "./pageFooter";
 
 
 
 /**
- * A simple word count plugin.
- *
- * @param {Object} options
- * @return {Object}
+ * 生成定位点
  */
 
 function GenLocatePoint(options) {
@@ -21,6 +17,8 @@ function GenLocatePoint(options) {
       switch (node.type) {
         case 'locatePoint':
           return <LocatePoint {...props} >{children}</LocatePoint>
+        default:
+          return ""
       }
     }
   }
@@ -30,6 +28,6 @@ function GenLocatePoint(options) {
  * Plugins.
  */
 
-const plugins = [CollapseOnEscape(), GenLocatePoint(), PageHeader(), PageFooter()]
+const plugins = [CollapseOnEscape()]
 
 export default plugins;
