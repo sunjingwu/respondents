@@ -11,25 +11,21 @@ class PaperFace extends Component {
     const { node } = this.props
     const pageWidth = node.data.get('pageWidth')
     const pageHeight = node.data.get('pageHeight')
-    const pageMargin = node.data.get('pageMargin')
 
     const pageStyle = {
       position: 'relative',
       backgroundColor: '#fff',
       margin: '1px auto',
-      width: pageWidth,
-      height: pageHeight,
-      padding: pageMargin.join(" ")
+      width: pageWidth+'mm',
+      height: pageHeight+'mm'
     }
 
     return (
       <div className="page" style={pageStyle} {...this.props.attributes}>
         {this.props.children}
       </div>
-
     )
   }
-
 }
 
 

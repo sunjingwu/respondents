@@ -6,21 +6,19 @@ import React, {Component} from 'react';
  */
 class AnswerArea extends Component {
 
-
   render() {
-
-    //作答区高度
-    const height = 8;
 
     const answerAreaStyle = {
       width: '100%',
       borderCollapse: 'collapse',
-      border: 'solid 1px black'
+      border: 'solid 1px black',
+      padding: '10px',
+      boxSizing: 'border-box'
     }
 
     return (
       <div style={answerAreaStyle} className="answerArea" {...this.props.attributes}>
-        1.解答题内容
+        {this.props.children}
       </div>
     )
   }

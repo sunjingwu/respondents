@@ -16,14 +16,16 @@ class SubjectTopic extends React.Component {
    */
 
   render() {
-    const { node } = this.props
-    const con = node.data.get("content");
+
+    const { attributes, children, node } = this.props
 
 
     return (
-      <div className={'subjectTopic'} {...this.props.attributes}>
+      <div className={'subjectTopic'}>
         {this.renderScoreBar()}
-        <AnswerArea/>
+        <AnswerArea {...attributes}>
+          {children}
+        </AnswerArea>
       </div>
     )
   }
@@ -37,8 +39,13 @@ class SubjectTopic extends React.Component {
   renderScoreBar = () => {
     const { node } = this.props
     const s = node.data.get("score");
+
+    const tableStyle = {
+      borderBottom: '0px'
+    }
+
     return (
-      <table>
+      <table className={'scoreBar'} style={tableStyle}>
         <tbody>
         <tr>
           <td>1</td>

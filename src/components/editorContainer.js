@@ -7,6 +7,7 @@ import PaperFace from "../elements/paperFace";
 import LocatePoint from "../elements/locatePoint";
 import SheetHeader from "../elements/sheetHeader";
 import SubjectTopic from "../elements/subjectTopic";
+import PageContent from "../elements/pageContent";
 
 const {Content} = Layout;
 const isBoldHotkey = isKeyHotkey('mod+b')
@@ -68,18 +69,24 @@ class EditorContainer extends Component{
       }
       case 'page':
         return <PaperFace {...props} >{children}</PaperFace>
+      case 'pageContent':
+        return <PageContent {...props} >{children}</PageContent>
       case 'pageHeader':
         const headStyle = {
-          top:'0',
-          position: 'absolute'
+          top:'10px',
+          position: 'absolute',
+          textAlign: 'center',
+          width: '100%'
         }
         return (
           <div className="pageHeader" style={headStyle}>{children}</div>
         )
       case 'pageFooter':
         const footStyle = {
-          bottom:'0',
-          position: 'absolute'
+          bottom:'10px',
+          position: 'absolute',
+          textAlign: 'center',
+          width: '100%'
         }
         return (
           <div className="pageFooter" style={footStyle}>{children}</div>
@@ -140,8 +147,9 @@ class EditorContainer extends Component{
   }
 
 
-  onChange = ({value}) => {
-    this.props.editorChange({value});
+  onChange = (change) => {
+
+    this.props.editorChange(change);
   }
 
 

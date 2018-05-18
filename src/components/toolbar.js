@@ -71,6 +71,10 @@ class Toolbar extends Component{
     this.state = this.props.state;
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState(nextProps);
+  }
+
   onChange = ({value}) => {
     this.props.editorChange({value});
   }
@@ -176,6 +180,9 @@ class Toolbar extends Component{
     event.preventDefault()
     const src = window.prompt('Enter the URL of the image:')
     if (!src) return
+
+    if(!isImage(src)) return
+
 
     const change = this.state.value.change().call(insertImage, src)
 
