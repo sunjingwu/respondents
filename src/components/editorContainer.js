@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
 import {isKeyHotkey} from 'is-hotkey'
 import {Layout} from 'antd/lib/index'
-import StudyNo from '../elements/studyNo'
 import plugins from '../plugins/plugin'
 import {Editor} from 'slate-react'
 import PaperFace from "../elements/paperFace";
 import LocatePoint from "../elements/locatePoint";
+import SheetHeader from "../elements/sheetHeader";
+import SubjectTopic from "../elements/subjectTopic";
 
 const {Content} = Layout;
 const isBoldHotkey = isKeyHotkey('mod+b')
@@ -26,6 +27,10 @@ class EditorContainer extends Component{
   renderNode = props => {
     const { attributes, children, node, isSelected } = props
     switch (node.type) {
+      case 'sheetHeader':
+        return <SheetHeader {...props}>{children}</SheetHeader>
+      case 'subjectTopic':
+        return <SubjectTopic {...props}>{children}</SubjectTopic>
       case 'table':
         return (
           <table>
@@ -61,8 +66,6 @@ class EditorContainer extends Component{
           <img src={src} className={className} style={style} {...attributes} />
         )
       }
-      case 'studyNo':
-        return <StudyNo {...props}/>
       case 'page':
         return <PaperFace {...props} >{children}</PaperFace>
       case 'pageHeader':

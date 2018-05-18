@@ -1,4 +1,5 @@
 import React from 'react'
+import AnswerArea from "./answerArea";
 
 /**
  * 主观题 component.
@@ -15,9 +16,14 @@ class SubjectTopic extends React.Component {
    */
 
   render() {
+    const { node } = this.props
+    const con = node.data.get("content");
+
+
     return (
-      <div {...this.props.attributes}>
-        {this.renderVideo()}
+      <div className={'subjectTopic'} {...this.props.attributes}>
+        {this.renderScoreBar()}
+        <AnswerArea/>
       </div>
     )
   }
@@ -28,47 +34,20 @@ class SubjectTopic extends React.Component {
    * @return {Element}
    */
 
-  renderVideo = () => {
-    const { node, isSelected } = this.props
-    const video = node.data.get('video')
-
-    const wrapperStyle = {
-      position: 'relative',
-      outline: isSelected ? '2px solid blue' : 'none',
-    }
-
-    const maskStyle = {
-      display: isSelected ? 'none' : 'block',
-      position: 'absolute',
-      top: '0',
-      left: '0',
-      height: '100%',
-      width: '100%',
-      cursor: 'cell',
-      zIndex: 1,
-    }
-
-    const iframeStyle = {
-      display: 'block',
-    }
-
+  renderScoreBar = () => {
+    const { node } = this.props
+    const s = node.data.get("score");
     return (
-      <div style={wrapperStyle}>
-        <div style={maskStyle} />
-
-        <table style={iframeStyle}>
-          <tbody>
-          <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>{video}</td>
-          </tr>
-          <tr>
-            {this.children}
-          </tr>
-          </tbody>
-        </table>
-      </div>
+      <table>
+        <tbody>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>2</td>
+          <td>{s}分</td>
+        </tr>
+        </tbody>
+      </table>
     )
   }
 }

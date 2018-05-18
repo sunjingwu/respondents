@@ -6,7 +6,13 @@ class StudyNo extends Component {
 
   render() {
     const { node } = this.props
-    const count = node.data.get('count')
+    const count = node.data.get('studyNoCount')
+
+    const containerStyle ={
+      display: "inline-block",
+      position: 'absolute',
+      top: '20px'
+    }
 
     const tableStyle = {
       borderCollapse: 'collapse',
@@ -22,7 +28,7 @@ class StudyNo extends Component {
     }
 
     return (
-      <div contentEditable={false} className="studyNo" {...this.props.attributes}>
+      <div style={containerStyle} contentEditable={false} className="studyNo" {...this.props.attributes}>
         <table style={tableStyle} cellPadding="0" cellSpacing="0">
           <tbody>
           <tr height="6mm">

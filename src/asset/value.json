@@ -15,6 +15,10 @@
         "nodes": [
           {
             "object": "block",
+            "type": "locatePoint"
+          },
+          {
+            "object": "block",
             "type": "pageHeader",
             "nodes": [
               {
@@ -43,16 +47,62 @@
           },
           {
             "object": "block",
-            "type": "locatePoint"
+            "type": "sheetHeader",
+            "data": {
+              "studentInfo":"studyNo",
+              "studyNoCount":8,
+              "studentType":[],
+              "displayAB": false,
+              "displayABPaper": false,
+              "displayAbsent": false
+            }
           },
           {
             "object": "block",
-            "type": "studyNo",
+            "type": "objectTopic",
             "data": {
-              "count":4
-            },
+              "noList":[1,2,3,4,5,6,7,8,9,10],
+              "title": "客观题"
+            }
+          },
+          {
+            "object": "block",
+            "type": "fillTopic",
+            "data": {
+              "noList":[11,12,13,14,15,16,17,18,19,20],
+              "title": "填空题"
+            }
+          },
+          {
+            "object": "block",
+            "type": "paragraph",
             "nodes": [
+              {
+                "object": "text",
+                "leaves": [
+                  {
+                    "text": "主观题qqqq"
+                  }
+                ]
+              }
             ]
+          },
+          {
+            "object": "block",
+            "type": "subjectTopic",
+            "data": {
+              "noList":[21],
+              "score": 12,
+              "content": "主观题内容"
+            }
+          },
+          {
+            "object": "block",
+            "type": "compositionTopic",
+            "data": {
+              "noList":[25],
+              "title": "作文题"
+            }
           },
           {
             "object": "block",

@@ -25,7 +25,8 @@ class App extends Component {
   state = {
     answerList: ["A","B"],
     scoreList: [],
-    //location: {paperName: "名称是什么东西"},
+    sheetDesc: {},
+    location: {paperName: "名称是什么东西"},
     value: value,
   }
 
