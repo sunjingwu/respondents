@@ -13,6 +13,7 @@ class PaperFace extends Component {
     const pageHeight = node.data.get('pageHeight')
 
     const pageStyle = {
+      boxShadow: '0 0 0 0.75pt #d1d1d1, 0 0 3pt 0.75pt #ccc',
       position: 'relative',
       backgroundColor: '#fff',
       margin: '1px auto',

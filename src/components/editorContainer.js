@@ -3,12 +3,12 @@ import {isKeyHotkey} from 'is-hotkey'
 import {Layout} from 'antd/lib/index'
 import plugins from '../plugins/plugin'
 import {Editor} from 'slate-react'
+
 import PaperFace from "../elements/paperFace";
 import LocatePoint from "../elements/locatePoint";
 import SheetHeader from "../elements/sheetHeader";
 import SubjectTopic from "../elements/subjectTopic";
 import PageContent from "../elements/pageContent";
-import * as PubSub from "pubsub-js";
 
 const {Content} = Layout;
 const isBoldHotkey = isKeyHotkey('mod+b')
@@ -19,6 +19,10 @@ const isCodeHotkey = isKeyHotkey('mod+`')
 class EditorContainer extends Component{
 
 
+  constructor(props){
+    super(props)
+    this.state = {value: this.props.value}
+  }
   /**
    * Render a Slate node.
    *
@@ -148,30 +152,49 @@ class EditorContainer extends Component{
   }
 
 
-  onChange = (change) => {
+  // On change, update the app's React state with the new editor value.
+  onChange = ({value}) => {
 
-    this.props.editorChange(change);
+    /*if (value.document != this.state.value.document) {
+      const content = JSON.stringify(value.toJSON())
+      localStorage.setItem('content', content)
+    }*/
+
+    this.setState({value})
+  }
+
+
+  componentDidMount(){
+
+
+    //设置高度满屏：获取视窗高度，减去头部高度
+    let tH = document.getElementsByClassName("headerBar")[0].offsetHeight
+
+    this.myRef.style.height = ( window.innerHeight - tH) + "px";
   }
 
   render() {
     const containerStyle = {
-      "backgroundColor": "rgba(154, 154, 154, 0.33)",
-      "margin": "0"
+      overflowY: 'scroll',
+      height: '557px'
     }
 
     return (
-      <Content className="container" style={containerStyle}>
-        <Editor
-          placeholder="Enter some rich text..."
-          value={this.props.state.value}
-          onChange={this.onChange}
-          onKeyDown={this.onKeyDown}
-          plugins={plugins}
-          renderNode={this.renderNode}
-          renderMark={this.renderMark}
-          spellCheck
-        />
-      </Content>
+      <div ref={div => { this.myRef = div}} className="container" style={containerStyle}>
+        <Content>
+          <Editor
+            placeholder="Enter some rich text..."
+            value={this.state.value}
+            onChange={this.onChange}
+            onKeyDown={this.onKeyDown}
+            plugins={plugins}
+            renderNode={this.renderNode}
+            renderMark={this.renderMark}
+            spellCheck
+          />
+        </Content>
+      </div>
+
     )
   }
 

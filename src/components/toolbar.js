@@ -6,7 +6,6 @@ import Html from 'slate-html-serializer'
 import './toolbar.css'
 import rules from '../schemas/rules'
 
-const html = new Html({ rules })
 /**
  * Define the default node type.
  *
@@ -48,7 +47,7 @@ function insertImage(change, src, target) {
   change.insertBlock({
     type: 'image',
     isVoid: true,
-    data: { src },
+    data: {src},
   })
 }
 
@@ -64,7 +63,7 @@ const ToolbarButton = props => (
   </span>
 )
 
-class Toolbar extends Component{
+class Toolbar extends Component {
 
   constructor(props) {
     super(props);
@@ -86,7 +85,7 @@ class Toolbar extends Component{
 
   onClickRedo = event => {
     event.preventDefault()
-    const { value } = this.state
+    const {value} = this.state
     const change = value.change().redo()
     this.onChange(change)
   }
@@ -98,7 +97,7 @@ class Toolbar extends Component{
 
   onClickUndo = event => {
     event.preventDefault()
-    const { value } = this.state
+    const {value} = this.state
     const change = value.change().undo()
     this.onChange(change)
   }
@@ -112,7 +111,7 @@ class Toolbar extends Component{
 
   onClickMark = (event, type) => {
     event.preventDefault()
-    const { value } = this.state
+    const {value} = this.state
     const change = value.change().toggleMark(type)
     this.onChange(change)
   }
@@ -126,9 +125,9 @@ class Toolbar extends Component{
 
   onClickBlock = (event, type) => {
     event.preventDefault()
-    const { value } = this.state
+    const {value} = this.state
     const change = value.change()
-    const { document } = value
+    const {document} = value
 
     // Handle everything but list buttons.
     if (type != 'bulleted-list' && type != 'numbered-list') {
@@ -180,9 +179,7 @@ class Toolbar extends Component{
     event.preventDefault()
     const src = window.prompt('Enter the URL of the image:')
     if (!src) return
-
-    if(!isImage(src)) return
-
+    if (!isImage(src)) return
 
     const change = this.state.value.change().call(insertImage, src)
 
@@ -190,7 +187,7 @@ class Toolbar extends Component{
   }
 
 
-  onClickSave = (value,event) => {
+  onClickSave = (value, event) => {
 
     const content = JSON.stringify(value.toJSON())
     localStorage.setItem('content', content)
@@ -203,7 +200,7 @@ class Toolbar extends Component{
     let htmlStr = "";
     const pages = document.getElementsByClassName("page");
     let pageLength = pages.length;
-    for(let i = 0; i < pageLength; i++){
+    for (let i = 0; i < pageLength; i++) {
       htmlStr += pages[i].outerHTML;
     }
 
@@ -211,13 +208,13 @@ class Toolbar extends Component{
     localStorage.setItem('html', htmlStr)
 
     //TODO 获取所有元素，获取对应位置信息
-    for(let i = 0; i < pageLength; i++){
+    for (let i = 0; i < pageLength; i++) {
       const pg = pages[i];
       const studyNo = pg.getElementsByClassName("studyNo");
     }
 
 
-    this.state.location;
+    //this.state.location;
 
 
     alert("保存成功！")
@@ -231,7 +228,7 @@ class Toolbar extends Component{
    */
 
   hasMark = type => {
-    const { value } = this.state
+    const {value} = this.state
     return value.activeMarks.some(mark => mark.type == type)
   }
 
@@ -243,15 +240,19 @@ class Toolbar extends Component{
    */
 
   hasBlock = type => {
-    const { value } = this.state
+    const {value} = this.state
     return value.blocks.some(node => node.type == type)
   }
 
 
   render() {
-    const { value } = this.state
+    const {value} = this.state
+    const menuStyle = {
+      zIndex: 1
+    }
+
     return (
-      <div className="menu toolbar-menu">
+      <div style={menuStyle} className="menu toolbar-menu">
         {this.renderMarkButton('bold', 'format_bold')}
         {this.renderMarkButton('italic', 'format_italic')}
         {this.renderMarkButton('underlined', 'format_underlined')}
@@ -268,8 +269,8 @@ class Toolbar extends Component{
         {this.renderBlockButton('bulleted-list', 'format_list_bulleted')}
 
 
-        <ToolbarButton icon="undo" onMouseDown={this.onClickUndo} />
-        <ToolbarButton icon="redo" onMouseDown={this.onClickRedo} />
+        <ToolbarButton icon="undo" onMouseDown={this.onClickUndo}/>
+        <ToolbarButton icon="redo" onMouseDown={this.onClickRedo}/>
         <span className="button">Undos: {value.history.undos.size}</span>
         <span className="button">Redos: {value.history.redos.size}</span>
       </div>
@@ -290,7 +291,6 @@ class Toolbar extends Component{
     const onMouseDown = event => this.onClickMark(event, type)
 
     return (
-      // eslint-disable-next-line react/jsx-no-bind
       <span className="button" onMouseDown={onMouseDown} data-active={isActive}>
         <span className="material-icons">{icon}</span>
       </span>
@@ -310,7 +310,6 @@ class Toolbar extends Component{
     const onMouseDown = event => this.onClickBlock(event, type)
 
     return (
-      // eslint-disable-next-line react/jsx-no-bind
       <span className="button" onMouseDown={onMouseDown} data-active={isActive}>
         <span className="material-icons">{icon}</span>
       </span>
@@ -336,7 +335,7 @@ class Toolbar extends Component{
   renderSaveButton = () => {
     return (
       <div className="menu toolbar-menu">
-        <span className="button" onMouseDown={this.onClickSave.bind(this,this.state.value)}>
+        <span className="button" onMouseDown={this.onClickSave.bind(this, this.state.value)}>
           <span className="material-icons">save</span>
         </span>
       </div>
