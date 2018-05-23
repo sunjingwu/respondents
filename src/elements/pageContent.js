@@ -1,11 +1,4 @@
 import React, {Component} from 'react';
-import {Operation} from "slate";
-import {
-  cloneFragment,
-  findDOMNode,
-  findDOMRange,
-  findNode,
-} from 'slate-react'
 import {Value} from 'slate'
 import {ASUtil} from "../utils/ASUtil";
 import * as PubSub from "pubsub-js";
