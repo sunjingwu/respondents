@@ -8,6 +8,7 @@ import LocatePoint from "../elements/locatePoint";
 import SheetHeader from "../elements/sheetHeader";
 import SubjectTopic from "../elements/subjectTopic";
 import PageContent from "../elements/pageContent";
+import * as PubSub from "pubsub-js";
 
 const {Content} = Layout;
 const isBoldHotkey = isKeyHotkey('mod+b')
@@ -152,9 +153,7 @@ class EditorContainer extends Component{
     this.props.editorChange(change);
   }
 
-
   render() {
-
     const containerStyle = {
       "backgroundColor": "rgba(154, 154, 154, 0.33)",
       "margin": "0"

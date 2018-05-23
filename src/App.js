@@ -8,6 +8,7 @@ import './App.css';
 import defaultValue from './asset/value.json'
 import EditorContainer from "./components/editorContainer";
 import Toolbar from "./components/toolbar";
+import * as PubSub from "pubsub-js";
 
 const {Header, Sider} = Layout;
 
@@ -21,13 +22,15 @@ class App extends Component {
    *
    * @type {Object}
    */
-
-  state = {
-    answerList: ["A","B"],
-    scoreList: [],
-    sheetDesc: {},
-    location: {paperName: "名称是什么东西"},
-    value: value,
+  constructor(props){
+    super(props)
+    this.state = {
+      answerList: ["A","B"],
+      scoreList: [],
+      sheetDesc: {},
+      location: {paperName: "名称是什么东西"},
+      value: value,
+    }
   }
 
   // On change, update the app's React state with the new editor value.
@@ -39,6 +42,21 @@ class App extends Component {
     }*/
 
     this.setState({value})
+  }
+
+
+  componentDidMount(){
+    //通过PubSub库订阅一个信息
+    this.pubsub_token = PubSub.subscribe('val', function (topic, value) {
+      this.setState({
+        value: value
+      });
+    }.bind(this));
+  }
+
+  componentWillUnmount () {
+    //当组件将要卸载的时候，退订信息
+    PubSub.unsubscribe(this.pubsub_token);
   }
 
   // Render the editor.

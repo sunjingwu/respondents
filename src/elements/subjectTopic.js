@@ -18,11 +18,11 @@ class SubjectTopic extends React.Component {
   render() {
 
     const { attributes, children, node } = this.props
-
+    const score = node.data.get("score")
 
     return (
       <div className={'subjectTopic'}>
-        {this.renderScoreBar()}
+        {isNaN(score)?null:this.renderScoreBar()}
         <AnswerArea {...attributes}>
           {children}
         </AnswerArea>

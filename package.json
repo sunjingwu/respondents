@@ -5,6 +5,7 @@
   "dependencies": {
     "antd": "^3.5.2",
     "image-extensions": "^1.1.0",
+    "pubsub-js": "^1.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-scripts": "1.0.16",
