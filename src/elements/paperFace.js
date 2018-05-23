@@ -16,6 +16,7 @@ class PaperFace extends Component {
       boxShadow: '0 0 0 0.75pt #d1d1d1, 0 0 3pt 0.75pt #ccc',
       position: 'relative',
       backgroundColor: '#fff',
+      cursor: 'text',
       margin: '1px auto',
       width: pageWidth+'mm',
       height: pageHeight+'mm'

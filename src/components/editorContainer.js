@@ -163,19 +163,28 @@ class EditorContainer extends Component{
     this.setState({value})
   }
 
+  updateDimensions() {
+    let tH = document.getElementsByClassName("headerBar")[0].offsetHeight
+    this.myRef.style.height = ( window.innerHeight - tH) + "px";
+  }
 
   componentDidMount(){
-
-
     //设置高度满屏：获取视窗高度，减去头部高度
-    let tH = document.getElementsByClassName("headerBar")[0].offsetHeight
+    this.updateDimensions()
+    window.addEventListener("resize", this.updateDimensions.bind(this));
+  }
 
-    this.myRef.style.height = ( window.innerHeight - tH) + "px";
+  /**
+   * Remove event listener
+   */
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateDimensions.bind(this));
   }
 
   render() {
     const containerStyle = {
       overflowY: 'scroll',
+      cursor: "default",
       height: '557px'
     }
 

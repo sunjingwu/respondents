@@ -8,6 +8,7 @@ import defaultValue from './asset/value.json'
 import EditorContainer from "./components/editorContainer";
 import * as PubSub from "pubsub-js";
 import Toolbar from "./components/toolbar";
+import Logo from "./components/topbar/logo";
 
 const {Header} = Layout;
 const SubMenu = Menu.SubMenu;
@@ -35,15 +36,12 @@ class App extends Component {
   }
 
   componentDidMount(){
-    //通过PubSub库订阅一个信息
+    //通过PubSub库订阅一个信息，接收子组件的信息，用于分页分栏
     this.pubsub_token = PubSub.subscribe('val', function (topic, value) {
       this.setState({
         value: value
       });
     }.bind(this));
-
-
-    //重设高度
   }
 
   componentWillUnmount () {
@@ -52,6 +50,10 @@ class App extends Component {
   }
 
 
+  /**
+   * 菜单点击事件处理函数
+   * @param e
+   */
   handleClick = (e) => {
     console.log('click ', e);
     this.setState({
@@ -67,7 +69,6 @@ class App extends Component {
       backgroundColor: "#FFF",
       height: "auto",
       lineHeight: '30px',
-      borderBottom: '1px solid #ccc',
       zIndex: 1
     }
 
@@ -76,14 +77,18 @@ class App extends Component {
       <div className="App">
         <Layout>
           <Header className={'headerBar'} style={headStyle}>
-            {/*<Logo/>*/}
+            <Logo/>
+
             <Menu
               onClick={this.handleClick}
               mode="horizontal"
             >
-              <Menu.Item key="file">
-                文件
-              </Menu.Item>
+              <SubMenu title={<span>文件</span>}>
+                <Menu.Item key="setting:1">Option 1</Menu.Item>
+                <Menu.Item key="setting:2">Option 2</Menu.Item>
+                <Menu.Item key="setting:3">Option 3</Menu.Item>
+                <Menu.Item key="setting:4">Option 4</Menu.Item>
+              </SubMenu>
               <Menu.Item key="insert">
                 插入
               </Menu.Item>
@@ -106,6 +111,7 @@ class App extends Component {
             </Menu>
 
             <Toolbar editorChange={this.onChange} state={this.state}/>
+            {/*这里可以防止二级菜单 <div>1</div>*/}
           </Header>
 
           <Layout>

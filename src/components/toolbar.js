@@ -248,7 +248,8 @@ class Toolbar extends Component {
   render() {
     const {value} = this.state
     const menuStyle = {
-      zIndex: 1
+      zIndex: 1,
+      borderBottom: '1px solid #ccc'
     }
 
     return (
