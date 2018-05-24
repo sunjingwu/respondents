@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import {Value} from 'slate'
-import {Icon, Layout, Menu} from 'antd';
+import {Layout, Menu} from 'antd';
 
 import './App.css';
 import defaultValue from './asset/value.json'
@@ -61,6 +61,22 @@ class App extends Component {
     });
   }
 
+
+  // On change, update the app's React state with the new editor value.
+  onChange = ({value}) => {
+
+    /*if (value.document != this.state.value.document) {
+      const content = JSON.stringify(value.toJSON())
+      localStorage.setItem('content', content)
+    }*/
+
+    this.setState({value})
+  }
+
+  changeState (state) {
+    this.setState(state)
+  }
+
   // Render the editor.
   render() {
 
@@ -111,11 +127,11 @@ class App extends Component {
             </Menu>
 
             <Toolbar editorChange={this.onChange} state={this.state}/>
-            {/*这里可以防止二级菜单 <div>1</div>*/}
+            {/*这里可以放置二级菜单 <div>1</div>*/}
           </Header>
 
           <Layout>
-            <EditorContainer value={this.state.value}/>
+            <EditorContainer editorChange={this.onChange} state={this.state}/>
           </Layout>
         </Layout>
       </div>

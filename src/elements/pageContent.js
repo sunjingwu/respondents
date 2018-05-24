@@ -8,10 +8,6 @@ import * as PubSub from "pubsub-js";
  */
 class PageContent extends Component {
 
-  componentDidMount(){
-    const element = this.myRef
-  }
-
   componentDidUpdate(params) {
 
     const element = this.myRef

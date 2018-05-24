@@ -21,7 +21,14 @@ class EditorContainer extends Component{
 
   constructor(props){
     super(props)
-    this.state = {value: this.props.value}
+  }
+
+  /*componentWillReceiveProps(nextProps) {
+    this.setState(nextProps);
+  }*/
+
+  onChange = ({value}) => {
+    this.props.editorChange({value});
   }
   /**
    * Render a Slate node.
@@ -33,10 +40,6 @@ class EditorContainer extends Component{
   renderNode = props => {
     const { attributes, children, node, isSelected } = props
     switch (node.type) {
-      case 'sheetHeader':
-        return <SheetHeader {...props}>{children}</SheetHeader>
-      case 'subjectTopic':
-        return <SubjectTopic {...props}>{children}</SubjectTopic>
       case 'table':
         return (
           <table>
@@ -72,6 +75,11 @@ class EditorContainer extends Component{
           <img src={src} className={className} style={style} {...attributes} />
         )
       }
+
+      case 'sheetHeader':
+        return <SheetHeader {...props}>{children}</SheetHeader>
+      case 'subjectTopic':
+        return <SubjectTopic {...props}>{children}</SubjectTopic>
       case 'page':
         return <PaperFace {...props} >{children}</PaperFace>
       case 'pageContent':
@@ -151,18 +159,6 @@ class EditorContainer extends Component{
     return true
   }
 
-
-  // On change, update the app's React state with the new editor value.
-  onChange = ({value}) => {
-
-    /*if (value.document != this.state.value.document) {
-      const content = JSON.stringify(value.toJSON())
-      localStorage.setItem('content', content)
-    }*/
-
-    this.setState({value})
-  }
-
   updateDimensions() {
     let tH = document.getElementsByClassName("headerBar")[0].offsetHeight
     this.myRef.style.height = ( window.innerHeight - tH) + "px";
@@ -193,7 +189,7 @@ class EditorContainer extends Component{
         <Content>
           <Editor
             placeholder="Enter some rich text..."
-            value={this.state.value}
+            value={this.props.state.value}
             onChange={this.onChange}
             onKeyDown={this.onKeyDown}
             plugins={plugins}
