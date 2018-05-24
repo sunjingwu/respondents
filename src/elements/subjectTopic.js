@@ -1,5 +1,6 @@
 import React from 'react'
 import AnswerArea from "./answerArea";
+import ScoreBar from "./scoreBar";
 
 /**
  * 主观题 component.
@@ -40,21 +41,8 @@ class SubjectTopic extends React.Component {
     const { node } = this.props
     const s = node.data.get("score");
 
-    const tableStyle = {
-      borderBottom: '0px'
-    }
-
     return (
-      <table className={'scoreBar'} style={tableStyle}>
-        <tbody>
-        <tr>
-          <td>1</td>
-          <td>2</td>
-          <td>2</td>
-          <td>{s}分</td>
-        </tr>
-        </tbody>
-      </table>
+      <ScoreBar score={s}/>
     )
   }
 }

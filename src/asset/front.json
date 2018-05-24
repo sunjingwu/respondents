@@ -1,0 +1,107 @@
+{
+  "paperName": "123123123",
+  "paperId": "",
+  "pageType": {
+    "name": "A4",
+    "colCount": 1,
+    "scanName": "A4"
+  },
+  "isBarcode": false,
+  "isQrcode": false,
+  "isStudyNo": true,
+  "isShortStudyNo": false,
+  "studyNum": 8,
+  "isDisplayProArea": true,
+  "isDisplayPageNum": false,
+  "isDisplayABPaper": false,
+  "isDisplayABTestPaper": false,
+  "isPageA": true,
+  "isObjectVerticalAlign": false,
+  "isDisplayStudentType": false,
+  "studentTypes": [],
+  "topicTypeDescs": [
+    {
+      "id": "0295f45a-959c-43a6-a866-7afe9826cc92",
+      "title": "单选题",
+      "beginNo": 1,
+      "endNo": 2,
+      "optionCount": 4,
+      "count": 2,
+      "colCount": 4,
+      "category": "SingleChoice",
+      "topicDescs": [
+        {
+          "id": "aa64472c-45cd-4702-858d-5bdb085d2c6b",
+          "score": 0,
+          "no": 1,
+          "noList": [
+            1
+          ],
+          "optionCount": 4,
+          "content": "",
+          "nextContent": "",
+          "height": 0,
+          "previewId": "",
+          "nextId": "",
+          "chooseTopicNum": 0,
+          "smallTopicType": "SingleChoice",
+          "showQuestionDesc": false,
+          "questionContent": "",
+          "lineType": 1,
+          "answerContent": {
+            "score": 0,
+            "topicId": "aa64472c-45cd-4702-858d-5bdb085d2c6b",
+            "num": 1,
+            "scoreList": [
+              0
+            ],
+            "answerList": [],
+            "index": 3
+          },
+          "indexList": [
+            3
+          ]
+        },
+        {
+          "id": "b3f6cbc1-5cac-4000-9fb3-ba7160302418",
+          "score": 0,
+          "no": 2,
+          "noList": [
+            2
+          ],
+          "optionCount": 4,
+          "content": "",
+          "nextContent": "",
+          "height": 0,
+          "previewId": "",
+          "nextId": "",
+          "chooseTopicNum": 0,
+          "smallTopicType": "SingleChoice",
+          "showQuestionDesc": false,
+          "questionContent": "",
+          "lineType": 1,
+          "answerContent": {
+            "score": 0,
+            "topicId": "b3f6cbc1-5cac-4000-9fb3-ba7160302418",
+            "num": 2,
+            "scoreList": [
+              0
+            ],
+            "answerList": [],
+            "index": 4
+          },
+          "indexList": [
+            4
+          ]
+        }
+      ],
+      "subjectiveCategory": "SingleChoice",
+      "showQuestionStem": false,
+      "titleTip": "",
+      "height": 0
+    }
+  ],
+  "isLocked": false,
+  "nameClassTitle": " <span style=\"font-weight: bold;font-size: 4mm;\">姓名：</span><span style=\"width:30mm;border-bottom: solid 1px black;  display: inline-block\"> </span> <span style=\"font-weight: bold;font-size: 4mm;\">班级：</span><span style=\"width:30mm;border-bottom: solid 1px black;  display: inline-block\"> </span><br> <span style=\"font-weight: bold;font-size: 4mm;\">考场/座位号：</span><span style=\"line-height: 12px;width:30mm;border-bottom: solid 1px black;  display: inline-block\"> </span> ",
+  "needingTopicContent": " <p style=\"text-align: center;font-weight: bold;font-size: 4mm;line-height: 4mm;\">注意事项</p><p> 1．答题前请将姓名、班级、考场、座位号、准考证号填写清楚。<br> 2．客观题答题，必须使用2B铅笔填涂，修改时用橡皮擦干净。  <br> 3．主观题答题，必须使用黑色签字笔书写。<br> 4．必须在题号对应的答题区域内作答，超出答题区域书写无效。 <br> 5．保持答卷清洁、完整。 <br>  </p>"
+}

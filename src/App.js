@@ -5,6 +5,7 @@ import {Layout, Menu} from 'antd';
 
 import './App.css';
 import defaultValue from './asset/value.json'
+import descValue from './asset/front.json'
 import EditorContainer from "./components/editorContainer";
 import * as PubSub from "pubsub-js";
 import Toolbar from "./components/toolbar";
@@ -29,7 +30,7 @@ class App extends Component {
     this.state = {
       answerList: ["A","B"],
       scoreList: [],
-      sheetDesc: {},
+      sheetDesc: descValue,
       location: {paperName: "名称是什么东西"},
       value: value,
     }

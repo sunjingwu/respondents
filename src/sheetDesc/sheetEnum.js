@@ -1,5 +1,16 @@
-studentInfo = {
+StudentInfo = {
 
+  //条码
+  BARCODE:'barCode',
+
+  //二维码
+  QRCODE: 'qrCode',
+
+  //准考号
+  STUDYNO: 'studyNo',
+
+  //学籍号
+  STUDENTNO: 'studentNo'
 
 
 }

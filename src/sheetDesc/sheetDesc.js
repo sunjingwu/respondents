@@ -3,6 +3,9 @@ export class SheetDesc {
 
   constructor(sheetName,studentInfo,topicTypeDescs){
 
+    /**
+     * 答题卡名称，与paper名称一致
+     */
     this.sheetName = sheetName;
 
     //题型列表
@@ -43,6 +46,37 @@ export class SheetDesc {
     this.caution = "";
 
 
+    /**
+     * 纸张类型
+     * @type {{}}
+     */
     this.pageType = {};
+
+
+    /**
+     * 考生信息类型
+     * @type {string}
+     */
+    this.studentInfo = StudentInfo.BARCODE;
+
+    /**
+     * 考生信息位数
+     * @type {number}
+     */
+    this.studentNoCount = 8;
+
+
+    /**
+     * 页眉
+     * @type {string}
+     */
+    this.pageHeader = '';
+
+    /**
+     * 密封线内容
+     * @type {string}
+     */
+    this.sealingLine = "";
+
   }
 }

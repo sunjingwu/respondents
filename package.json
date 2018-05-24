@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "antd": "^3.5.2",
+    "axios": "^0.18.0",
+    "classnames": "^2.2.5",
     "image-extensions": "^1.1.0",
     "pubsub-js": "^1.6.0",
     "react": "^16.0.0",
