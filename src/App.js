@@ -4,20 +4,18 @@ import {Value} from 'slate'
 import {Layout, Menu} from 'antd';
 
 import './App.css';
-import defaultValue from './asset/value.json'
-import descValue from './asset/front.json'
+import defaultDescValue from './asset/front.json'
 import EditorContainer from "./components/editorContainer";
 import * as PubSub from "pubsub-js";
 import Toolbar from "./components/toolbar";
 import Logo from "./components/topbar/logo";
+import {ASUtil} from "./utils/ASUtil";
+import {SheetService} from "./service/sheetService";
+import {DocCtrl} from "./controller/docCtrl";
 
 const {Header} = Layout;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
-
-const existingValue = JSON.parse(localStorage.getItem('content'))
-const initialValue = existingValue || defaultValue
-const value = Value.fromJSON(initialValue);
 
 class App extends Component {
   /**
@@ -27,6 +25,25 @@ class App extends Component {
    */
   constructor(props){
     super(props)
+
+    let descValue;
+    //判断时新建还是加载答题卡预览或二次编辑
+    if(window.location.pathname === '/createSheet'){
+      if(document.referrer === window.location.href){
+        //刷新
+      }
+      //新建入口，从文件中读取默认答题卡描述、生成默认的value
+      descValue = defaultDescValue
+    } else {
+      //加载
+      const sheetId = ASUtil.GetQueryString('sheetId')
+      //获取对应答题卡的desc,根据desc生成value
+      descValue = SheetService.getSheetDesc(sheetId)
+    }
+
+    const initialValue = DocCtrl.fromDesc(descValue)
+    const value = Value.fromJSON(initialValue);
+
     this.state = {
       answerList: ["A","B"],
       scoreList: [],

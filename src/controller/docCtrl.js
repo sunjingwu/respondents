@@ -45,7 +45,7 @@ export class DocCtrl {
   /**
    * 从sheetDesc 初始化 document
    */
-  fromDesc(sheetDesc){
+  static fromDesc(sheetDesc){
 
 
   }

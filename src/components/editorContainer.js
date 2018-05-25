@@ -18,11 +18,6 @@ const isCodeHotkey = isKeyHotkey('mod+`')
 
 class EditorContainer extends Component{
 
-
-  constructor(props){
-    super(props)
-  }
-
   /*componentWillReceiveProps(nextProps) {
     this.setState(nextProps);
   }*/

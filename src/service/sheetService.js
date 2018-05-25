@@ -5,7 +5,7 @@
  */
 export class SheetService {
 
-  static getSheetDesc(){
+  static getSheetDesc(sheetId){
 
   }
 }
