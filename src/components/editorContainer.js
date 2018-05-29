@@ -9,6 +9,8 @@ import LocatePoint from "../elements/locatePoint";
 import SheetHeader from "../elements/sheetHeader";
 import SubjectTopic from "../elements/subjectTopic";
 import PageContent from "../elements/pageContent";
+import CautionArea from "../elements/cautionArea";
+import HandWrite from "../elements/handWrite";
 
 const {Content} = Layout;
 const isBoldHotkey = isKeyHotkey('mod+b')
@@ -51,9 +53,6 @@ class EditorContainer extends Component{
         const ulStyle = { "listStyle": "disc"}
         return <ul style={ulStyle} {...attributes}>{children}</ul>
       case 'heading-one':
-        const titleStyle = {
-          textAlign: "center"
-        }
         return <h1 style={titleStyle} {...attributes}>{children}</h1>
       case 'heading-two':
         return <h2 {...attributes}>{children}</h2>
@@ -70,9 +69,18 @@ class EditorContainer extends Component{
           <img src={src} className={className} style={style} {...attributes} />
         )
       }
-
+      case 'sheetTitle':
+        const titleStyle = {
+          textAlign: "center"
+        }
+        //TODO 第二页不可编辑
+        return <h1 className={'sheetTitle'} style={titleStyle} {...attributes}>{children}</h1>
       case 'sheetHeader':
         return <SheetHeader {...props}>{children}</SheetHeader>
+      case 'handWrite':
+        return <HandWrite {...props}>{children}</HandWrite>
+      case 'caution':
+        return <CautionArea {...props}>{children}</CautionArea>
       case 'subjectTopic':
         return <SubjectTopic {...props}>{children}</SubjectTopic>
       case 'page':

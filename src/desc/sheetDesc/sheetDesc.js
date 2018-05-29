@@ -1,11 +1,16 @@
+import {ASUtil} from "../../utils/ASUtil";
+import {StudentInfo} from "./sheetEnum";
+
 export class SheetDesc {
 
 
-  constructor(sheetName,studentInfo,topicTypeDescs){
+  constructor(sheetName,topicTypeDescs){
 
     /**
      * 答题卡名称，与paper名称一致
      */
+    this.sheetId = ASUtil.guid()
+
     this.sheetName = sheetName;
 
     //题型列表

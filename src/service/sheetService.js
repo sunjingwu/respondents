@@ -8,4 +8,8 @@ export class SheetService {
   static getSheetDesc(sheetId){
 
   }
+
+  static getDocument(sheetId){
+
+  }
 }

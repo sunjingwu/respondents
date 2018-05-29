@@ -4,8 +4,7 @@ export class ASUtil {
     if (window.screen.deviceXDPI != undefined) {
       arrDPI[0] = window.screen.deviceXDPI;
       arrDPI[1] = window.screen.deviceYDPI;
-    }
-    else {
+    } else {
       var tmpNode = document.createElement("div");
       tmpNode.style.cssText = "width:1in;height:1in;position:absolute;left:0px;top:0px;z-index:99;visibility:hidden";
       document.body.appendChild(tmpNode);
@@ -40,5 +39,13 @@ export class ASUtil {
     var r = window.location.search.substr(1).match(reg);
     if (r != null) return decodeURI(r[2]);
     return null;
+  }
+
+
+  static guid() {
+    function S4() {
+      return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    }
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
   }
 }

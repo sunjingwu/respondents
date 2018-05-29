@@ -9,10 +9,8 @@ class StudyBarCode extends Component {
     const containerStyle ={
       display: "inline-block",
       border: "dashed 1px #555",
-      position: 'absolute',
-      top: '10mm',
-      width: '90mm',
-      height: '50mm'
+      width: '82mm',
+      height: '40mm'
     }
 
     return (

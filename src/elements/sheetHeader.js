@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import StudyNo from "./studyNo";
-import CautionArea from "./cautionArea";
 import StudyBarCode from "./studyBarCode";
 
 
@@ -11,7 +10,7 @@ class SheetHeader extends Component {
 
 
   render() {
-    const { node } = this.props
+    const { node,children } = this.props
     const studentInfo = node.data.get('studentInfo')
 
     const sheetHeaderStyle = {
@@ -20,21 +19,16 @@ class SheetHeader extends Component {
       margin: '1px auto'
     }
 
-    const leftStyle = {
-      display: 'inline-block',
-      width: '90mm'
+    const clear = {
+      clear: 'both'
     }
+
 
     return (
       <div className="sheetHeader" style={sheetHeaderStyle} {...this.props.attributes}>
-        <div style={leftStyle}>
-          <div className={"handWrite"}>
-            <p>姓名：___________ 班级：_____________</p>
-            <p>座位号：___________</p>
-          </div>
-          <CautionArea/>
-        </div>
+        {children}
         {studentInfo == "studyNo" ? <StudyNo {...this.props}/> : <StudyBarCode/>}
+        <div style={clear}></div>
       </div>
     )
   }

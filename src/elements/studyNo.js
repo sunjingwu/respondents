@@ -10,8 +10,7 @@ class StudyNo extends Component {
 
     const containerStyle ={
       display: "inline-block",
-      position: 'absolute',
-      top: '20px'
+      clear: 'both'
     }
 
     const tableStyle = {
@@ -24,7 +23,7 @@ class StudyNo extends Component {
       width: '30mm',
       borderCollapse: 'collapse',
       border: 'solid 1px black',
-      textAlign: 'center',
+      textAlign: 'center'
     }
 
     return (

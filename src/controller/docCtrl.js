@@ -1,6 +1,5 @@
 
-
-
+import {Value} from 'slate'
 /**
  *
  * 文档控制器
@@ -10,12 +9,14 @@
  */
 export class DocCtrl {
 
-  constructor(value){
-    this.value = value
+  constructor(slateValue){
+    this.value = slateValue
 
     //参考slatejs 的 document
-    this.document = value.document
+    this.document = slateValue.get("document")
   }
+
+
 
 
   /**
@@ -37,16 +38,6 @@ export class DocCtrl {
    * 题目跨页生成第二部分
    */
   genNextPart(){
-
-  }
-
-
-
-  /**
-   * 从sheetDesc 初始化 document
-   */
-  static fromDesc(sheetDesc){
-
 
   }
 

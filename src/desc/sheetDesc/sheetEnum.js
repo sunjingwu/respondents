@@ -1,4 +1,4 @@
-StudentInfo = {
+export const StudentInfo = {
 
   //条码
   BARCODE:'barCode',
@@ -11,15 +11,13 @@ StudentInfo = {
 
   //学籍号
   STUDENTNO: 'studentNo'
-
-
 }
 
 /**
  * 题型
  *
  * */
-Category = {
+export const Category = {
   /**
    * 单选题
    */
@@ -68,7 +66,7 @@ Category = {
  *
  *
  * */
-PageType = {
+export const PageType = {
   A4: {
     name: "A4",
     colCount: 1,

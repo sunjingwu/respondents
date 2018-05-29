@@ -4,14 +4,14 @@ import {Value} from 'slate'
 import {Layout, Menu} from 'antd';
 
 import './App.css';
-import defaultDescValue from './asset/front.json'
+import defaultValue from './asset/value.json'
 import EditorContainer from "./components/editorContainer";
 import * as PubSub from "pubsub-js";
 import Toolbar from "./components/toolbar";
 import Logo from "./components/topbar/logo";
 import {ASUtil} from "./utils/ASUtil";
 import {SheetService} from "./service/sheetService";
-import {DocCtrl} from "./controller/docCtrl";
+import {DescCtrl} from "./controller/descCtrl";
 
 const {Header} = Layout;
 const SubMenu = Menu.SubMenu;
@@ -26,6 +26,7 @@ class App extends Component {
   constructor(props){
     super(props)
 
+    let doc;
     let descValue;
     //判断时新建还是加载答题卡预览或二次编辑
     if(window.location.pathname === '/createSheet'){
@@ -33,16 +34,16 @@ class App extends Component {
         //刷新
       }
       //新建入口，从文件中读取默认答题卡描述、生成默认的value
-      descValue = defaultDescValue
+      doc = defaultValue
     } else {
       //加载
       const sheetId = ASUtil.GetQueryString('sheetId')
       //获取对应答题卡的desc,根据desc生成value
+      doc = SheetService.getDocument(sheetId)
       descValue = SheetService.getSheetDesc(sheetId)
     }
 
-    const initialValue = DocCtrl.fromDesc(descValue)
-    const value = Value.fromJSON(initialValue);
+    const value = Value.fromJSON(doc);
 
     this.state = {
       answerList: ["A","B"],
@@ -60,6 +61,15 @@ class App extends Component {
         value: value
       });
     }.bind(this));
+
+
+    //生成desc，用户保存时候生成位置信息
+    let descCtrl = new DescCtrl()
+    descCtrl.genSheetDesc(this.state.value)
+
+    this.setState({
+      sheetDesc: descCtrl.sheetDesc
+    });
   }
 
   componentWillUnmount () {
