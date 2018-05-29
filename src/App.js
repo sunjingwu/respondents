@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import {Value} from 'slate'
-import {Layout, Menu} from 'antd';
+import {Button, Layout, Menu} from 'antd';
 
 import './App.css';
 import defaultValue from './asset/value.json'
@@ -12,6 +12,7 @@ import Logo from "./components/topbar/logo";
 import {ASUtil} from "./utils/ASUtil";
 import {SheetService} from "./service/sheetService";
 import {DescCtrl} from "./controller/descCtrl";
+import $ from 'jquery';
 
 const {Header} = Layout;
 const SubMenu = Menu.SubMenu;
@@ -106,6 +107,46 @@ class App extends Component {
     this.setState(state)
   }
 
+
+  onClickSave = (event) => {
+
+    const content = this.state.value.toJS()
+    localStorage.setItem('content', content)
+
+
+    /* 获取页面上的html
+    const string = html.serialize(value)
+    localStorage.setItem('html', string)*/
+
+    let htmlStr = "";
+    const pages = document.getElementsByClassName("page");
+    let pageLength = pages.length;
+    for (let i = 0; i < pageLength; i++) {
+      htmlStr += pages[i].outerHTML;
+    }
+
+    //添加HTML文档头部
+    localStorage.setItem('html', htmlStr)
+
+    //TODO 获取所有元素，获取对应位置信息
+    for (let i = 0; i < pageLength; i++) {
+      const pg = pages[i];
+      const studyNo = pg.getElementsByClassName("studyNo");
+    }
+
+
+    //所有位置相对纸张
+    var position = $('.absent').position();
+    var top = position.top;
+    var left = position.left;
+
+
+    //this.state.location;
+
+
+    alert("保存成功！")
+  }
+
   // Render the editor.
   render() {
 
@@ -153,6 +194,9 @@ class App extends Component {
               <Menu.Item key="tool">
                 工具
               </Menu.Item>
+
+              <Button type="primary" onMouseUp={this.onClickSave}>保存</Button>
+
             </Menu>
 
             <Toolbar editorChange={this.onChange} state={this.state}/>
@@ -166,8 +210,6 @@ class App extends Component {
       </div>
     )
   }
-
-
 }
 
 export default App;

@@ -24,6 +24,7 @@ export class DescCtrl {
     let sheetName = $(".sheetTitle").text()// document.getElementsByClassName('sheetTitle')
     var desc = new SheetDesc(sheetName)
 
+    //TODO 题目信息、排版、题目等信息
 
 
 

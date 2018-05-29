@@ -15,7 +15,6 @@ class SheetHeader extends Component {
     const studentInfo = node.data.get('studentInfo')
 
     const sheetHeaderStyle = {
-      position: 'relative',
       backgroundColor: '#fff',
       margin: '1px auto'
     }
@@ -68,7 +67,7 @@ class SheetHeader extends Component {
             <span style={fillBlockStyle}> </span>
           </div>
           <div style={absentStyle}>缺考标记 &nbsp; &nbsp; &nbsp; &nbsp;
-            <span style={blockStyle}> </span>
+            <span className={'absent'} style={blockStyle}> </span>
           </div>
         </div>
         <div style={clear}></div>
