@@ -3,6 +3,7 @@
  * 用于生成答题卡描述信息，从页面上获取，使用原生的document
  */
 import {SheetDesc} from "../desc/sheetDesc/sheetDesc";
+import $ from 'jquery';
 
 export class DescCtrl {
 
@@ -20,8 +21,10 @@ export class DescCtrl {
   genSheetDesc(slateValue){
 
     //从第一页获取答题卡的标题，考生信息等
-    let sheetName = document.getElementsByClassName('sheetTitle')
-    var desc = new SheetDesc(sheetName.item(0).innerText)
+    let sheetName = $(".sheetTitle").text()// document.getElementsByClassName('sheetTitle')
+    var desc = new SheetDesc(sheetName)
+
+
 
 
     this.sheetDesc = desc;

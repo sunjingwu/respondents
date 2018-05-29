@@ -22,7 +22,8 @@ class CautionArea extends Component {
     }
 
     const headStyle = {
-      textAlign: 'center'
+      textAlign: 'center',
+      fontWeight: 'bold'
     }
 
     return (

@@ -235,7 +235,7 @@ class Toolbar extends Component {
 
 
   render() {
-    const {value} = this.props.state
+
     const menuStyle = {
       zIndex: 1,
       borderBottom: '1px solid #ccc'
@@ -258,11 +258,8 @@ class Toolbar extends Component {
         {this.renderBlockButton('numbered-list', 'format_list_numbered')}
         {this.renderBlockButton('bulleted-list', 'format_list_bulleted')}
 
-
         <ToolbarButton icon="undo" onMouseDown={this.onClickUndo}/>
         <ToolbarButton icon="redo" onMouseDown={this.onClickRedo}/>
-        <span className="button">Undos: {value.history.undos.size}</span>
-        <span className="button">Redos: {value.history.redos.size}</span>
       </div>
     )
   }

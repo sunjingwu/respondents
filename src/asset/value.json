@@ -41,7 +41,7 @@
                 "object": "block",
                 "type": "sheetHeader",
                 "data": {
-                  "studentInfo": "barCode",
+                  "studentInfo": "studyNo",
                   "studyNoCount": 8,
                   "studentType": [],
                   "displayAB": false,
@@ -146,8 +146,8 @@
                 "object": "block",
                 "type": "subjectTopic",
                 "data": {
-                  "noList":[21],
-                  "score": 12
+                  "id": "topicId",
+                  "noList": [21]
                 },
                 "nodes": [
                   {

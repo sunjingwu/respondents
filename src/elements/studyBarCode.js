@@ -9,14 +9,26 @@ class StudyBarCode extends Component {
     const containerStyle ={
       display: "inline-block",
       border: "dashed 1px #555",
-      width: '82mm',
-      height: '40mm'
+      width: '70mm',
+      height: '30mm',
+      color: 'grey',
+      float: 'right',
+      textAlign: 'center'
+    }
+
+    const styleT ={
+      fontSize: '24px'
+    }
+
+    const styleN ={
+      fontSize: '14px'
     }
 
     return (
       <div style={containerStyle} contentEditable={false} className="barCode" {...this.props.attributes}>
-        <div>贴条码位置</div>
-        <div>正面朝上</div>
+        <div style={styleT}>贴条形码区</div>
+        <br />
+        <div style={styleN}>（正面朝上，切勿贴出虚线方框）</div>
       </div>
     )
   }

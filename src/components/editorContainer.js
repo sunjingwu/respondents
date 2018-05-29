@@ -71,7 +71,8 @@ class EditorContainer extends Component{
       }
       case 'sheetTitle':
         const titleStyle = {
-          textAlign: "center"
+          textAlign: "center",
+          fontWeight: 'bold'
         }
         //TODO 第二页不可编辑
         return <h1 className={'sheetTitle'} style={titleStyle} {...attributes}>{children}</h1>

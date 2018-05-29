@@ -62,14 +62,6 @@ class App extends Component {
       });
     }.bind(this));
 
-
-    //生成desc，用户保存时候生成位置信息
-    let descCtrl = new DescCtrl()
-    descCtrl.genSheetDesc(this.state.value)
-
-    this.setState({
-      sheetDesc: descCtrl.sheetDesc
-    });
   }
 
   componentWillUnmount () {
@@ -97,6 +89,15 @@ class App extends Component {
       const content = JSON.stringify(value.toJSON())
       localStorage.setItem('content', content)
     }*/
+
+
+    //生成desc，用户保存时候生成位置信息
+    let descCtrl = new DescCtrl()
+    descCtrl.genSheetDesc(this.state.value)
+
+    this.setState({
+      sheetDesc: descCtrl.sheetDesc
+    });
 
     this.setState({value})
   }

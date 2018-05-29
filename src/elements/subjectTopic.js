@@ -20,9 +20,10 @@ class SubjectTopic extends React.Component {
 
     const { attributes, children, node } = this.props
     const score = node.data.get("score")
+    const topicId = node.data.get("id")
 
     return (
-      <div className={'subjectTopic'}>
+      <div tpid={topicId} className={'subjectTopic'}>
         {isNaN(score)?null:this.renderScoreBar()}
         <AnswerArea {...attributes}>
           {children}

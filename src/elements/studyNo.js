@@ -10,7 +10,7 @@ class StudyNo extends Component {
 
     const containerStyle ={
       display: "inline-block",
-      clear: 'both'
+      float: 'right'
     }
 
     const tableStyle = {
