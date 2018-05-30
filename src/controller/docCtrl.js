@@ -1,5 +1,3 @@
-
-import {Value} from 'slate'
 /**
  *
  * 文档控制器
@@ -15,6 +13,31 @@ export class DocCtrl {
     //参考slatejs 的 document
     this.document = slateValue.get("document")
   }
+
+
+  /**
+   * 设置纸张类型
+   */
+  setPageType(pageType){
+
+  }
+
+  /**
+   * 设置答题卡模式
+   */
+  setSheetMode(){
+
+  }
+
+  setSheetName(){
+
+  }
+
+
+  setStudentInfo(){
+
+  }
+
 
 
 

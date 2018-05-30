@@ -1,5 +1,6 @@
 import {ASUtil} from "../../utils/ASUtil";
 import {StudentInfo} from "./sheetEnum";
+import {ASConfig} from "../asConfig";
 
 export class SheetDesc {
 
@@ -55,7 +56,7 @@ export class SheetDesc {
      * 纸张类型
      * @type {{}}
      */
-    this.pageType = {};
+    this.pageType = ASConfig.defaultPageType;
 
 
     /**
@@ -68,14 +69,14 @@ export class SheetDesc {
      * 考生信息位数
      * @type {number}
      */
-    this.studentNoCount = 8;
+    this.studentNoCount = ASConfig.defaultStudyNoCount;
 
 
     /**
      * 页眉
      * @type {string}
      */
-    this.pageHeader = '';
+    this.pageHeader = "";
 
     /**
      * 密封线内容

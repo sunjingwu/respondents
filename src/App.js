@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import {Value} from 'slate'
-import {Button, Layout, Menu} from 'antd';
+import {Button, Layout, Tabs} from 'antd';
 
 import './App.css';
 import defaultValue from './asset/value.json'
@@ -15,8 +15,7 @@ import {DescCtrl} from "./controller/descCtrl";
 import $ from 'jquery';
 
 const {Header} = Layout;
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
+const TabPane = Tabs.TabPane;
 
 class App extends Component {
   /**
@@ -30,14 +29,28 @@ class App extends Component {
     let doc;
     let descValue;
     //判断时新建还是加载答题卡预览或二次编辑
-    if(window.location.pathname === '/createSheet'){
+    if(window.location.pathname === '/createSheet' || window.location.pathname === '/genSheet'){
       if(document.referrer === window.location.href){
         //刷新
       }
       //新建入口，从文件中读取默认答题卡描述、生成默认的value
       doc = defaultValue
+
+      //初始化默认信息
+      // 1.纸张类型栏数
+      // 2.考生信息类型
+      // 3.答题卡名称
+      // 4.答题卡模式：手阅网阅等
+      // 5.AB卡、禁止作答区等
+
+      if(window.location.pathname === '/genSheet'){
+        //自动生成的场景,根据默认的场景，
+        // 6.根据参数中的题目信息，生成对应题目的doc
+
+      }
+
     } else {
-      //加载
+      //二次加载
       const sheetId = ASUtil.GetQueryString('sheetId')
       //获取对应答题卡的desc,根据desc生成value
       doc = SheetService.getDocument(sheetId)
@@ -75,11 +88,8 @@ class App extends Component {
    * 菜单点击事件处理函数
    * @param e
    */
-  handleClick = (e) => {
-    console.log('click ', e);
-    this.setState({
-      current: e.key,
-    });
+  callback(key) {
+    console.log(key);
   }
 
 
@@ -165,39 +175,14 @@ class App extends Component {
           <Header className={'headerBar'} style={headStyle}>
             <Logo/>
 
-            <Menu
-              onClick={this.handleClick}
-              mode="horizontal"
-            >
-              <SubMenu title={<span>文件</span>}>
-                <Menu.Item key="setting:1">Option 1</Menu.Item>
-                <Menu.Item key="setting:2">Option 2</Menu.Item>
-                <Menu.Item key="setting:3">Option 3</Menu.Item>
-                <Menu.Item key="setting:4">Option 4</Menu.Item>
-              </SubMenu>
-              <Menu.Item key="insert">
-                插入
-              </Menu.Item>
-              <SubMenu title={<span>格式</span>}>
-                <MenuItemGroup title="Item 1">
-                  <Menu.Item key="setting:1">Option 1</Menu.Item>
-                  <Menu.Item key="setting:2">Option 2</Menu.Item>
-                </MenuItemGroup>
-                <MenuItemGroup title="Item 2">
-                  <Menu.Item key="setting:3">Option 3</Menu.Item>
-                  <Menu.Item key="setting:4">Option 4</Menu.Item>
-                </MenuItemGroup>
-              </SubMenu>
-              <Menu.Item key="update">
-                修改
-              </Menu.Item>
-              <Menu.Item key="tool">
-                工具
-              </Menu.Item>
+            <Button type="primary" onMouseUp={this.onClickSave}>保存</Button>
 
-              <Button type="primary" onMouseUp={this.onClickSave}>保存</Button>
+            <Tabs onChange={this.callback} type="card">
+              <TabPane tab="Tab 1" key="1">Content of Tab Pane 1</TabPane>
+              <TabPane tab="Tab 2" key="2">Content of Tab Pane 2</TabPane>
+              <TabPane tab="Tab 3" key="3">Content of Tab Pane 3</TabPane>
+            </Tabs>
 
-            </Menu>
 
             <Toolbar editorChange={this.onChange} state={this.state}/>
             {/*这里可以放置二级菜单 <div>1</div>*/}

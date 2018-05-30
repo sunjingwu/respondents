@@ -1,3 +1,11 @@
+export const SheetMode = {
+  //网阅
+  ONLINEMARING:'onLineMarking',
+  //手阅
+  HANDSCORING:'handScoring'
+}
+
+
 export const StudentInfo = {
 
   //条码
