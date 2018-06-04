@@ -76,16 +76,22 @@ export const Category = {
  * */
 export const PageType = {
   A4: {
+    width: 210,
+    height: 297,
     name: "A4",
     colCount: 1,
     scanName: "A4"
   },
   A3_2: {
+    width: 420,
+    height: 297,
     name: "A3_2",
     colCount: 2,
     scanName: "A3"
   },
   A3_3: {
+    width: 420,
+    height: 297,
     name: "A3_3",
     colCount: 3,
     scanName: "A3"

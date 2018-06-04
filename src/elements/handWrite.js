@@ -9,12 +9,9 @@ class HandWrite extends Component {
 
 
   render() {
-    const { node,children } = this.props
+    const { children } = this.props
 
     const handStyle = {
-      display: 'inline-block',
-      width: '90mm',
-      float: 'left'
     }
 
     return (

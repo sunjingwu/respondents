@@ -25,8 +25,6 @@ class SheetHeader extends Component {
     }
 
     const otherStyle = {
-      float: 'left',
-      display: 'inline-block',
       border: '1px solid #000',
       padding: '0 10px',
       fontWeight: 'bold'
@@ -61,7 +59,11 @@ class SheetHeader extends Component {
     return (
       <div className="sheetHeader" style={sheetHeaderStyle} {...this.props.attributes}>
         {children}
+
         {studentInfo == "studyNo" ? <StudyNo {...this.props}/> : <StudyBarCode/>}
+
+        <div style={clear}></div>
+
         <div contentEditable={false} style={otherStyle} className={'otherInfo'}>
           <div style={correctStyle}>正确填涂 &nbsp; &nbsp; &nbsp; &nbsp;
             <span style={fillBlockStyle}> </span>
@@ -70,7 +72,6 @@ class SheetHeader extends Component {
             <span className={'absent'} style={blockStyle}> </span>
           </div>
         </div>
-        <div style={clear}></div>
       </div>
     )
   }

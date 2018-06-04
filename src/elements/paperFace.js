@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import LocatePoint from "./locatePoint";
 
 
 /**
@@ -24,7 +25,11 @@ class PaperFace extends Component {
 
     return (
       <div className="page" style={pageStyle} {...this.props.attributes}>
+        <LocatePoint/>
+
+        {/*页眉页脚 密封线等*/}
         {this.props.children}
+
       </div>
     )
   }

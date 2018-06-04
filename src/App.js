@@ -4,7 +4,6 @@ import {Value} from 'slate'
 import {Button, Layout, Tabs} from 'antd';
 
 import './App.css';
-import defaultValue from './asset/value.json'
 import EditorContainer from "./components/editorContainer";
 import * as PubSub from "pubsub-js";
 import Toolbar from "./components/toolbar";
@@ -13,6 +12,7 @@ import {ASUtil} from "./utils/ASUtil";
 import {SheetService} from "./service/sheetService";
 import {DescCtrl} from "./controller/descCtrl";
 import $ from 'jquery';
+import {DocCtrl} from "./controller/docCtrl";
 
 const {Header} = Layout;
 const TabPane = Tabs.TabPane;
@@ -26,45 +26,54 @@ class App extends Component {
   constructor(props){
     super(props)
 
-    let doc;
+
     let descValue;
+    let slateValue
     //判断时新建还是加载答题卡预览或二次编辑
     if(window.location.pathname === '/createSheet' || window.location.pathname === '/genSheet'){
       if(document.referrer === window.location.href){
-        //刷新
-      }
-      //新建入口，从文件中读取默认答题卡描述、生成默认的value
-      doc = defaultValue
+        //刷新情况
 
-      //初始化默认信息
-      // 1.纸张类型栏数
-      // 2.考生信息类型
-      // 3.答题卡名称
-      // 4.答题卡模式：手阅网阅等
-      // 5.AB卡、禁止作答区等
+      }
+
+      //根据答题卡默认配置，生成默认的value
+      slateValue = DocCtrl.initFromDefault();
 
       if(window.location.pathname === '/genSheet'){
-        //自动生成的场景,根据默认的场景，
+        //判断是否已经存在对应试卷的答题卡，如果存在的话需要对比结构是否变化，结构发生变化时需重新生成答题卡
+        //let paperId
+        //DescCtrl.isTopicSame();
+
+        //自动生成的场景
         // 6.根据参数中的题目信息，生成对应题目的doc
 
+
+
       }
+
+
+      //descValue 在页面变动时从doc 生成
 
     } else {
       //二次加载
       const sheetId = ASUtil.GetQueryString('sheetId')
       //获取对应答题卡的desc,根据desc生成value
-      doc = SheetService.getDocument(sheetId)
+      let doc = SheetService.getDocument(sheetId)
       descValue = SheetService.getSheetDesc(sheetId)
+      slateValue = Value.fromJSON(doc);
     }
 
-    const value = Value.fromJSON(doc);
-
     this.state = {
+      //答题卡中题目的答案信息，主要用于手阅卡：客观题、填空题等，需考虑到大题带小题、一题多空等情况
       answerList: ["A","B"],
+      //题目的分数信息，主要用于手阅卡：可能存在多选特殊的给分规则，即不同的选择组合不同的分值
       scoreList: [],
+      //答题卡的基本描述信息
       sheetDesc: descValue,
-      location: {paperName: "名称是什么东西"},
-      value: value,
+      //答题卡相关的位置信息，可以不存，用户保存的时候存储，如果实现实时保存，需要是是生成
+      location: {paperName: "用户保存的时候回自动生成"},
+      //答题卡的排版信息 根据JSON通过Value.fromJS()生成
+      value: slateValue,
     }
   }
 

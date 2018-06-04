@@ -14,10 +14,6 @@
         "nodes": [
           {
             "object": "block",
-            "type": "locatePoint"
-          },
-          {
-            "object": "block",
             "type": "pageHeader",
             "nodes": [
               {
@@ -277,19 +273,6 @@
         "nodes": [
           {
             "object": "block",
-            "type": "locatePoint",
-            "data": {
-              "index": 1,
-              "position": {
-                "top": "10mm",
-                "left": "5mm",
-                "width": "5mm",
-                "height": "5mm"
-              }
-            }
-          },
-          {
-            "object": "block",
             "type": "pageContent",
             "data": {
               "pageMargin": [
@@ -298,55 +281,6 @@
               ]
             },
             "nodes": [
-              {
-                "object": "block",
-                "type": "subjectTopic",
-                "data": {
-                  "noList":[21]
-                },
-                "nodes": [
-                  {
-                    "object": "block",
-                    "type": "paragraph",
-                    "nodes": [
-                      {
-                        "object": "text",
-                        "leaves": [
-                          {
-                            "text": "b11111adsfadsfadsfadsf"
-                          }
-                        ]
-                      }
-                    ]
-                  },{
-                    "object": "block",
-                    "type": "paragraph",
-                    "nodes": [
-                      {
-                        "object": "text",
-                        "leaves": [
-                          {
-                            "text": "b2222adsfadsfadsfadsf"
-                          }
-                        ]
-                      }
-                    ]
-                  },{
-                    "object": "block",
-                    "type": "paragraph",
-                    "nodes": [
-                      {
-                        "object": "text",
-                        "leaves": [
-                          {
-                            "text": "b333311adsfadsfadsfadsf"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
               {
                 "object": "block",
                 "type": "paragraph",

@@ -5,20 +5,113 @@
  * @class
  * @public
  */
+import {ASConfig} from "../desc/asConfig";
+import {Document, Text, Block, Value} from 'slate'
+
+
 export class DocCtrl {
 
-  constructor(slateValue){
-    this.value = slateValue
 
-    //参考slatejs 的 document
-    this.document = slateValue.get("document")
+  constructor(){
+    //
+    this.value = ""
   }
 
+  /**
+   * 初始化答题卡基本信息，除题目信息外的东西
+   * 初始化默认信息
+   // 1.纸张类型栏数
+   // 2.考生信息类型
+   // 3.答题卡名称
+   // 4.答题卡模式：手阅网阅等
+   // 5.AB卡、禁止作答区等
+   * 返回初始化后的value
+   */
+  static initFromDefault(){
+
+
+    let pageType = ASConfig.defaultPageType
+
+
+    let slateValue = Value.create({
+      document: Document.create({
+        nodes: [
+          Block.create({
+            type: "page",
+            data: {
+              "pageIndex":0,
+              "pageType":"A4",
+              "pageWidth":pageType.width / pageType.colCount,
+              "pageHeight":pageType.height,
+            },
+            nodes: [
+              Block.create({
+                type: "pageContent",
+                data: {
+                  "pageMargin":[20,15]
+                },
+                nodes: [
+                  Block.create({
+                    type: "sheetHeader",
+                    data: {
+                      "studentInfo": "studyNo",
+                      "studyNoCount": 8,
+                      "studentType": [],
+                      "displayAB": false,
+                      "displayABPaper": false,
+                      "displayAbsent": false
+                    },
+                    nodes: [
+                      Block.create({
+                        type: "sheetTitle",
+                        nodes: [
+                          Text.create("Some text sheetTitle.")
+                        ]
+                      }),
+                      Block.create({
+                        type: "handWrite",
+                        nodes: [
+                          Block.create({
+                            type: 'paragraph',
+                            nodes: [
+                              Text.create("Some text handWrite.")
+                            ]
+                          })
+                        ]
+                      }),
+                      Block.create({
+                        type: "caution",
+                        nodes: [
+                          Block.create({
+                            type: 'paragraph',
+                            nodes: [
+                              Text.create("3．非选择题部分请按题号用0.5毫米黑色墨水签字笔书写，否则作答无效。要求字体工整、笔迹清晰。作图时，必须用2B铅笔，并描浓。.")
+                            ]
+                          })
+                        ]
+                      })
+                    ]
+                  })
+                ]
+              })
+            ]
+          })
+        ]
+      })
+    })
+
+    return slateValue
+
+  }
 
   /**
    * 设置纸张类型
    */
   setPageType(pageType){
+    //获取所有的page,设置纸张大小
+
+
+
 
   }
 

@@ -81,8 +81,11 @@ class LocatePoint extends Component {
       left: "6mm"
     }
 
+
+    //根据不同的板式，渲染不同的定位点方式
+
     return (
-      <div>
+      <div contentEditable={false}>
         <div key={1} index="1" contentEditable={false} className="locatePoint" style={locatePointStyle1}/>
         <div key={2} index="2" contentEditable={false} className="locatePoint" style={locatePointStyle2}/>
         <div key={3} index="3" contentEditable={false} className="locatePoint" style={locatePointStyle3}/>

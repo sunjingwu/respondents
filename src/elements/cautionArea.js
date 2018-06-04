@@ -15,9 +15,9 @@ class CautionArea extends Component {
       border: "1px solid #000",
       padding: '10px',
       //height: "30mm",
-      margin: "10px",
+      margin: "1mm",
       marginLeft: '0px',
-      width: '90mm',
+      width: '88mm',
       float: 'left'
     }
 

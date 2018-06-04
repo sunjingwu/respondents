@@ -3,9 +3,9 @@ import {isKeyHotkey} from 'is-hotkey'
 import {Layout} from 'antd/lib/index'
 import plugins from '../plugins/plugin'
 import {Editor} from 'slate-react'
+import $ from 'jquery'
 
 import PaperFace from "../elements/paperFace";
-import LocatePoint from "../elements/locatePoint";
 import SheetHeader from "../elements/sheetHeader";
 import SubjectTopic from "../elements/subjectTopic";
 import PageContent from "../elements/pageContent";
@@ -88,7 +88,7 @@ class EditorContainer extends Component{
         return <PaperFace {...props} >{children}</PaperFace>
       case 'pageContent':
         return <PageContent {...props} >{children}</PageContent>
-      case 'pageHeader':
+      /*case 'pageHeader':
         const headStyle = {
           top:'10px',
           position: 'absolute',
@@ -96,7 +96,9 @@ class EditorContainer extends Component{
           width: '100%'
         }
         return (
-          <div className="pageHeader" style={headStyle}>{children}</div>
+          <div {...attributes} contentEditable={false} className="pageHeader" style={headStyle}>
+            这是页眉
+          </div>
         )
       case 'pageFooter':
         const footStyle = {
@@ -106,10 +108,12 @@ class EditorContainer extends Component{
           width: '100%'
         }
         return (
-          <div className="pageFooter" style={footStyle}>{children}</div>
-        )
-      case 'locatePoint':
-        return <LocatePoint {...props} >{children}</LocatePoint>
+          <div {...attributes} contentEditable={false}  className="pageFooter" style={footStyle}>{children}</div>
+        )*/
+
+      // 定位点属于不可编辑内容，可在预览和保存的时候添加，在编辑界面不展示
+      /*case 'locatePoint':
+        return <LocatePoint {...props} >{children}</LocatePoint>*/
     }
   }
 
@@ -164,8 +168,8 @@ class EditorContainer extends Component{
   }
 
   updateDimensions() {
-    let tH = document.getElementsByClassName("headerBar")[0].offsetHeight
-    this.myRef.style.height = ( window.innerHeight - tH) + "px";
+    let tH = $(".headerBar").outerHeight()
+    this.container.style.height = ( window.innerHeight - tH) + "px";
   }
 
   componentDidMount(){
@@ -189,7 +193,7 @@ class EditorContainer extends Component{
     }
 
     return (
-      <div ref={div => { this.myRef = div}} className="container" style={containerStyle}>
+      <div ref={div => { this.container = div}} className="container" style={containerStyle}>
         <Content>
           <Editor
             placeholder="Enter some rich text..."
