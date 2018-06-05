@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 
 
 /**
- * 作答区
+ * 作答区，或编辑区
  */
-class AnswerArea extends Component {
+class EditArea extends Component {
 
   render() {
 
@@ -24,4 +24,4 @@ class AnswerArea extends Component {
   }
 }
 
-export default AnswerArea;
+export default EditArea;

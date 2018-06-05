@@ -1,5 +1,6 @@
 import React from 'react'
 import ScoreBar from "./scoreBar";
+import GridArea from "./gridArea";
 
 /**
  * 主观题 component.
@@ -7,7 +8,7 @@ import ScoreBar from "./scoreBar";
  * @type {Component}
  */
 
-class SubjectTopic extends React.Component {
+class ChineseCompositionTopic extends React.Component {
 
   /**
    * Render.
@@ -19,20 +20,22 @@ class SubjectTopic extends React.Component {
 
     const { attributes, children, node } = this.props
     const score = node.data.get("score")
+    const gridCount = node.data.get("gridCount")
     const topicId = node.data.get("id")
 
     return (
-      <div tpid={topicId} {...attributes} className={'subjectTopic'}>
+      <div tpid={topicId} {...attributes} className={'compositionTopic'}>
         {isNaN(score) ? null : <ScoreBar score={score}/>}
         {children}
+        
+        <GridArea gridCount={gridCount}></GridArea>
       </div>
     )
   }
-
 }
 
 /**
  * Export.
  */
 
-export default SubjectTopic
+export default ChineseCompositionTopic

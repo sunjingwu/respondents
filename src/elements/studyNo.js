@@ -4,11 +4,17 @@ import React, {Component} from 'react';
 class StudyNo extends Component {
 
 
+  onClickBlock(e){
+    console.log('clicked!')
+  }
+
+
   render() {
     const { node } = this.props
     const count = node.data.get('studyNoCount')
 
     const containerStyle ={
+      cursor: 'pointer',
       display: "inline-block",
       float: 'right',
       margin: '1mm'
@@ -27,8 +33,10 @@ class StudyNo extends Component {
       textAlign: 'center'
     }
 
+    const onMouseUp = event => this.onClickBlock(event)
+
     return (
-      <div style={containerStyle} contentEditable={false} className="studyNo" {...this.props.attributes}>
+      <div onMouseUp={onMouseUp} style={containerStyle} contentEditable={false} className="studyNo" {...this.props.attributes}>
         <table style={tableStyle} cellPadding="0" cellSpacing="0">
           <tbody>
           <tr height="6mm">

@@ -14,7 +14,9 @@ import {DescCtrl} from "./controller/descCtrl";
 import $ from 'jquery';
 import {DocCtrl} from "./controller/docCtrl";
 
-const {Header} = Layout;
+import defaultValue from "./asset/value";
+
+const {Content,Header,Sider} = Layout;
 const TabPane = Tabs.TabPane;
 
 class App extends Component {
@@ -37,7 +39,8 @@ class App extends Component {
       }
 
       //根据答题卡默认配置，生成默认的value
-      slateValue = DocCtrl.initFromDefault();
+      slateValue = Value.fromJSON(defaultValue);
+      //slateValue = DocCtrl.initFromDefault();
 
       if(window.location.pathname === '/genSheet'){
         //判断是否已经存在对应试卷的答题卡，如果存在的话需要对比结构是否变化，结构发生变化时需重新生成答题卡
@@ -90,15 +93,6 @@ class App extends Component {
   componentWillUnmount () {
     //当组件将要卸载的时候，退订信息
     PubSub.unsubscribe(this.pubsub_token);
-  }
-
-
-  /**
-   * 菜单点击事件处理函数
-   * @param e
-   */
-  callback(key) {
-    console.log(key);
   }
 
 
@@ -174,32 +168,42 @@ class App extends Component {
       backgroundColor: "#FFF",
       height: "auto",
       lineHeight: '30px',
-      zIndex: 1
+      zIndex: 1,
+      borderBottom: '1px solid #ccc'
     }
+
+    const operations = <Button type="primary" onMouseUp={this.onClickSave}>保存</Button>;
 
 
     return (
       <div className="App">
         <Layout>
           <Header className={'headerBar'} style={headStyle}>
+
             <Logo/>
 
-            <Button type="primary" onMouseUp={this.onClickSave}>保存</Button>
+            <Tabs tabBarExtraContent={operations}>
+              <TabPane tab="开始" key="1">
+                <Toolbar editorChange={this.onChange} state={this.state}/>
+              </TabPane>
+              <TabPane tab="插入" key="2">
+                <Button type="primary" onMouseUp={this.onClickSave}>主观题</Button>
+              </TabPane>
+              <TabPane tab="视图" key="3">
 
-            <Tabs onChange={this.callback} type="card">
-              <TabPane tab="Tab 1" key="1">Content of Tab Pane 1</TabPane>
-              <TabPane tab="Tab 2" key="2">Content of Tab Pane 2</TabPane>
-              <TabPane tab="Tab 3" key="3">Content of Tab Pane 3</TabPane>
+              </TabPane>
             </Tabs>
 
-
-            <Toolbar editorChange={this.onChange} state={this.state}/>
             {/*这里可以放置二级菜单 <div>1</div>*/}
           </Header>
 
           <Layout>
-            <EditorContainer editorChange={this.onChange} state={this.state}/>
+            <Content>
+              <EditorContainer editorChange={this.onChange} state={this.state}/>
+            </Content>
+            <Sider collapsedWidth={40} collapsible={true} reverseArrow={true} width={300} theme={'light'}>Sider</Sider>
           </Layout>
+
         </Layout>
       </div>
     )

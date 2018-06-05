@@ -14,20 +14,6 @@
         "nodes": [
           {
             "object": "block",
-            "type": "pageHeader",
-            "nodes": [
-              {
-                "object": "text",
-                "leaves": [
-                  {
-                    "text": "pageHeader A wise quote."
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "object": "block",
             "type": "pageContent",
             "data": {
               "pageMargin":[20,15]
@@ -126,7 +112,7 @@
               },
               {
                 "object": "block",
-                "type": "paragraph",
+                "type": "topicTitle",
                 "nodes": [
                   {
                     "object": "text",
@@ -143,44 +129,25 @@
                 "type": "subjectTopic",
                 "data": {
                   "id": "topicId",
-                  "noList": [21]
+                  "score": 12,
+                  "no": [21]
                 },
                 "nodes": [
                   {
                     "object": "block",
-                    "type": "paragraph",
+                    "type": "editArea",
                     "nodes": [
                       {
-                        "object": "text",
-                        "leaves": [
+                        "object": "block",
+                        "type": "paragraph",
+                        "nodes": [
                           {
-                            "text": "111 11a dsf1111 1adsfadsfadsfa dsf11111adsfadsfadsfadsf1 1111adsfadsf adsfadsf 1111 1adsfadsfadsf adsf11111adsfadsfads fadsf11111adsfadsfadsfa dsf11111adsfadsfadsfadsf11111adsfadsfadsfadsfadsfadsfadsf"
-                          }
-                        ]
-                      }
-                    ]
-                  },{
-                    "object": "block",
-                    "type": "paragraph",
-                    "nodes": [
-                      {
-                        "object": "text",
-                        "leaves": [
-                          {
-                            "text": "2222adsfadsfadsfadsf"
-                          }
-                        ]
-                      }
-                    ]
-                  },{
-                    "object": "block",
-                    "type": "paragraph",
-                    "nodes": [
-                      {
-                        "object": "text",
-                        "leaves": [
-                          {
-                            "text": "333311adsfadsfadsfadsf"
+                            "object": "text",
+                            "leaves": [
+                              {
+                                "text": "主观题qqqq"
+                              }
+                            ]
                           }
                         ]
                       }
@@ -190,72 +157,78 @@
               },
               {
                 "object": "block",
-                "type": "compositionTopic",
-                "data": {
-                  "noList":[25],
-                  "title": "作文题"
-                }
-              },
-              {
-                "object": "block",
-                "type": "paragraph",
+                "type": "topicTitle",
                 "nodes": [
                   {
                     "object": "text",
                     "leaves": [
                       {
-                        "text": "This is editable "
-                      },
-                      {
-                        "text": "rich",
-                        "marks": [
-                          {
-                            "type": "bold"
-                          }
-                        ]
-                      },
-                      {
-                        "text": " text, "
-                      },
-                      {
-                        "text": "much",
-                        "marks": [
-                          {
-                            "type": "italic"
-                          }
-                        ]
-                      },
-                      {
-                        "text": " better than a "
-                      },
-                      {
-                        "text": "<textarea>",
-                        "marks": [
-                          {
-                            "type": "code"
-                          }
-                        ]
-                      },
-                      {
-                        "text": "!"
+                        "text": "作文题松松"
                       }
                     ]
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "object": "block",
-            "type": "pageFooter",
-            "nodes": [
+              },
               {
-                "object": "text",
-                "leaves": [
+                "object": "block",
+                "type": "chineseComposition",
+                "data": {
+                  "no": 2,
+                  "gridCount": 900,
+                  "title": "作文题"
+                },
+                "nodes": [
                   {
-                    "text": "pageFooter A wise quote."
+                    "object": "block",
+                    "type": "editArea",
+                    "nodes": [
+                      {
+                        "object": "block",
+                        "type": "paragraph",
+                        "nodes": [
+                          {
+                            "object": "text",
+                            "leaves": [
+                              {
+                                "text": "作文题作文题作文题作文题"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
+              },
+              {
+                "object": "block",
+                "type": "objectTopic",
+                "data": {
+                  "topicList":[
+                    {
+                      "no": 1,
+                      "id": "uuid_1",
+                      "index": 2,
+                      "topicType": "SingleChoice",
+                      "optionCount": 4
+                    }, {
+                      "no": 12,
+                      "id": "uuid_2",
+                      "index": 3,
+                      "topicType": "SingleChoice",
+                      "optionCount": 4
+                    }, {
+                      "no": 13,
+                      "id": "uuid_13",
+                      "index": 4,
+                      "topicType": "SingleChoice",
+                      "optionCount": 2
+                    }
+                  ],
+                  "optionStyle": "box",
+                  "layoutStyle": "h-h",
+                  "rowCount": 5
+                }
               }
             ]
           }
@@ -281,108 +254,6 @@
               ]
             },
             "nodes": [
-              {
-                "object": "block",
-                "type": "paragraph",
-                "nodes": [
-                  {
-                    "object": "text",
-                    "leaves": [
-                      {
-                        "text": "This is editable "
-                      },
-                      {
-                        "text": "rich",
-                        "marks": [
-                          {
-                            "type": "bold"
-                          }
-                        ]
-                      },
-                      {
-                        "text": " text, "
-                      },
-                      {
-                        "text": "much",
-                        "marks": [
-                          {
-                            "type": "italic"
-                          }
-                        ]
-                      },
-                      {
-                        "text": " better than a "
-                      },
-                      {
-                        "text": "<textarea>",
-                        "marks": [
-                          {
-                            "type": "code"
-                          }
-                        ]
-                      },
-                      {
-                        "text": "!"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "object": "block",
-                "type": "paragraph",
-                "nodes": [
-                  {
-                    "object": "text",
-                    "leaves": [
-                      {
-                        "text":
-                        "Since it's rich text, you can do things like turn a selection of text "
-                      },
-                      {
-                        "text": "bold",
-                        "marks": [
-                          {
-                            "type": "bold"
-                          }
-                        ]
-                      },
-                      {
-                        "text":
-                        ", or add a semantically rendered block quote in the middle of the page, like this:"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "object": "block",
-                "type": "block-quote",
-                "nodes": [
-                  {
-                    "object": "text",
-                    "leaves": [
-                      {
-                        "text": "A wise quote."
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "object": "block",
-                "type": "paragraph",
-                "nodes": [
-                  {
-                    "object": "text",
-                    "leaves": [
-                      {
-                        "text": "Try it out for yourself!"
-                      }
-                    ]
-                  }
-                ]
-              }
             ]
           }
         ]

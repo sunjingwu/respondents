@@ -9,19 +9,15 @@ import React from 'react'
  * @returns {*}
  * @constructor
  */
-const ScoreBar = ({ score }) => {
+const GridArea = ({ gridCount }) => {
   let Node = 'div'
 
 
-
-
-
-
   return (
-    <Node score={score}>
-      <span>{score}分</span>
+    <Node className={'GridArea'}>
+      这是格子{gridCount}个
     </Node>
   )
 }
 
-export default ScoreBar
+export default GridArea

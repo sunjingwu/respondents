@@ -203,8 +203,7 @@ class Toolbar extends Component {
   render() {
 
     const menuStyle = {
-      zIndex: 1,
-      borderBottom: '1px solid #ccc'
+      zIndex: 1
     }
 
     return (

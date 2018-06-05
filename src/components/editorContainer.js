@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {isKeyHotkey} from 'is-hotkey'
-import {Layout} from 'antd/lib/index'
+import {Layout} from 'antd'
 import plugins from '../plugins/plugin'
 import {Editor} from 'slate-react'
 import $ from 'jquery'
@@ -11,8 +11,13 @@ import SubjectTopic from "../elements/subjectTopic";
 import PageContent from "../elements/pageContent";
 import CautionArea from "../elements/cautionArea";
 import HandWrite from "../elements/handWrite";
+import EditArea from "../elements/editArea";
+import ChineseCompositionTopic from "../elements/chineseCompositionTopic";
+import ObjectTopic from "../elements/objectTopic";
 
-const {Content} = Layout;
+import '../asset/editor.css'
+
+
 const isBoldHotkey = isKeyHotkey('mod+b')
 const isItalicHotkey = isKeyHotkey('mod+i')
 const isUnderlinedHotkey = isKeyHotkey('mod+u')
@@ -84,10 +89,27 @@ class EditorContainer extends Component{
         return <CautionArea {...props}>{children}</CautionArea>
       case 'subjectTopic':
         return <SubjectTopic {...props}>{children}</SubjectTopic>
+
+      case 'editArea':
+        return <EditArea {...props}>{children}</EditArea>
+
+      case 'chineseComposition':
+        return <ChineseCompositionTopic {...props}>{children}</ChineseCompositionTopic>
+
       case 'page':
         return <PaperFace {...props} >{children}</PaperFace>
       case 'pageContent':
         return <PageContent {...props} >{children}</PageContent>
+
+      case 'topicTitle':
+        const topicTitleStyle = {
+          marginTop: '10px'
+        }
+        return <div style={topicTitleStyle} {...props} >{children}</div>
+
+      case 'objectTopic':
+        return <ObjectTopic {...props} >{children}</ObjectTopic>
+
       /*case 'pageHeader':
         const headStyle = {
           top:'10px',
@@ -194,18 +216,16 @@ class EditorContainer extends Component{
 
     return (
       <div ref={div => { this.container = div}} className="container" style={containerStyle}>
-        <Content>
-          <Editor
-            placeholder="Enter some rich text..."
-            value={this.props.state.value}
-            onChange={this.onChange}
-            onKeyDown={this.onKeyDown}
-            plugins={plugins}
-            renderNode={this.renderNode}
-            renderMark={this.renderMark}
-            spellCheck
-          />
-        </Content>
+        <Editor
+          placeholder="Enter some rich text..."
+          value={this.props.state.value}
+          onChange={this.onChange}
+          onKeyDown={this.onKeyDown}
+          plugins={plugins}
+          renderNode={this.renderNode}
+          renderMark={this.renderMark}
+          spellCheck
+        />
       </div>
 
     )
