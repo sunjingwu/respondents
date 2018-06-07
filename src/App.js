@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import {Value} from 'slate'
-import {Button, Layout, Tabs} from 'antd';
+import {message, Button, Layout, Tabs, BackTop, Modal} from 'antd';
 
 import './App.css';
 import EditorContainer from "./components/editorContainer";
@@ -156,9 +156,24 @@ class App extends Component {
 
     //this.state.location;
 
-
-    alert("保存成功！")
+    message.success('保存成功！',2);
   }
+
+
+  /**
+   * 添加主观题
+   *
+   **/
+  insertSubject = () => {
+
+    //根据窗口输入信息，生成block
+
+    //插入到最后一个题目后面
+
+    //更新state
+
+  }
+
 
   // Render the editor.
   render() {
@@ -172,7 +187,14 @@ class App extends Component {
       borderBottom: '1px solid #ccc'
     }
 
-    const operations = <Button type="primary" onMouseUp={this.onClickSave}>保存</Button>;
+
+    //保存预览复制等处理
+    const operations = (
+      <div>
+        <Button type="primary" onMouseUp={this.onClickSave}>保存1</Button>
+        <Button type="primary" onMouseUp={this.onClickSave}>保存</Button>
+      </div>
+    );
 
 
     return (
@@ -183,14 +205,25 @@ class App extends Component {
             <Logo/>
 
             <Tabs tabBarExtraContent={operations}>
+              <TabPane tab="设置" key="0">
+                <span>页面设置</span>
+                <span>批改模式</span>
+                <span>考号板式</span>
+                <span>题目排序方式</span>
+                <span>客观题布局方式</span>
+                <span>0.5分支持</span>
+              </TabPane>
+
               <TabPane tab="开始" key="1">
                 <Toolbar editorChange={this.onChange} state={this.state}/>
               </TabPane>
               <TabPane tab="插入" key="2">
-                <Button type="primary" onMouseUp={this.onClickSave}>主观题</Button>
+                <Button type="primary" onMouseUp={this.insertSubject}>主观题</Button>
               </TabPane>
               <TabPane tab="视图" key="3">
-
+                <span>缺考标记</span>
+                <span>禁止作答区</span>
+                <span>密封线</span>
               </TabPane>
             </Tabs>
 
@@ -201,10 +234,23 @@ class App extends Component {
             <Content>
               <EditorContainer editorChange={this.onChange} state={this.state}/>
             </Content>
-            <Sider collapsedWidth={40} collapsible={true} reverseArrow={true} width={300} theme={'light'}>Sider</Sider>
+            <Sider defaultCollapsed={true} collapsedWidth={30} collapsible={true} reverseArrow={true} width={300} theme={'light'}>
+              Sider
+            </Sider>
           </Layout>
 
         </Layout>
+
+        <Modal
+          title="Basic Modal"
+          visible={this.state.visible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+        >
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Modal>
       </div>
     )
   }

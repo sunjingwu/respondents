@@ -16,6 +16,7 @@
     "slate-collapse-on-escape": "^0.6.0",
     "slate-html-serializer": "^0.6.3",
     "slate-react": "^0.12.4",
+    "slate-schema-violations": "^0.1.10",
     "slate-soft-break": "^0.6.0"
   },
   "scripts": {

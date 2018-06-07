@@ -8,7 +8,8 @@ class CautionArea extends Component {
 
 
   render() {
-    const { children } = this.props
+    const { children,node } = this.props
+    const width = node.data.get("width")
 
     const cautionStyle = {
       display: "inline-block",
@@ -17,7 +18,7 @@ class CautionArea extends Component {
       //height: "30mm",
       margin: "1mm",
       marginLeft: '0px',
-      width: '88mm',
+      width: width+'mm',
       float: 'left'
     }
 

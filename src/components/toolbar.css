@@ -44,7 +44,7 @@
 }
 
 .button[data-active='true'] {
-    color: black;
+    color: #3BAFDA;
 }
 
 .toolbar-menu .search {

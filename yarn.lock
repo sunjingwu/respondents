@@ -6949,6 +6949,10 @@ slate-react@^0.12.4:
     slate-plain-serializer "^0.5.10"
     slate-prop-types "^0.4.27"
 
+slate-schema-violations@^0.1.10:
+  version "0.1.10"
+  resolved "http://registry.npm.taobao.org/slate-schema-violations/download/slate-schema-violations-0.1.10.tgz#165227c230ea6c1027e523b7171a73e860e73646"
+
 slate-schema-violations@^0.1.8:
   version "0.1.8"
   resolved "http://registry.npm.taobao.org/slate-schema-violations/download/slate-schema-violations-0.1.8.tgz#b6bfbcc4defaa4971a96bf2d324c5b67fb4a4e20"

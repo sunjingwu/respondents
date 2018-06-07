@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {isKeyHotkey} from 'is-hotkey'
-import {Layout} from 'antd'
 import plugins from '../plugins/plugin'
 import {Editor} from 'slate-react'
 import $ from 'jquery'
@@ -16,12 +15,30 @@ import ChineseCompositionTopic from "../elements/chineseCompositionTopic";
 import ObjectTopic from "../elements/objectTopic";
 
 import '../asset/editor.css'
+import {schema} from "../schemas/schema";
 
 
 const isBoldHotkey = isKeyHotkey('mod+b')
 const isItalicHotkey = isKeyHotkey('mod+i')
 const isUnderlinedHotkey = isKeyHotkey('mod+u')
 const isCodeHotkey = isKeyHotkey('mod+`')
+
+/*function renderPlaceholder(props) {
+  const { node, editor } = props
+  if (node.object != 'block') return
+  if (node.type != 'sheetTitle') return
+  if (node.text != '') return
+
+  return (
+    <span
+      contentEditable={false}
+      style={{ textAlign:'center',display: 'inline-block', width: '0', whiteSpace: 'nowrap', opacity: '0.33' }}
+    >
+      {editor.props.placeholder}
+    </span>
+  )
+}*/
+
 
 class EditorContainer extends Component{
 
@@ -58,7 +75,7 @@ class EditorContainer extends Component{
         const ulStyle = { "listStyle": "disc"}
         return <ul style={ulStyle} {...attributes}>{children}</ul>
       case 'heading-one':
-        return <h1 style={titleStyle} {...attributes}>{children}</h1>
+        return <h1 {...attributes}>{children}</h1>
       case 'heading-two':
         return <h2 {...attributes}>{children}</h2>
       case 'list-item':
@@ -105,8 +122,7 @@ class EditorContainer extends Component{
         const topicTitleStyle = {
           marginTop: '10px'
         }
-        return <div style={topicTitleStyle} {...props} >{children}</div>
-
+        return <div style={topicTitleStyle} >{children}</div>
       case 'objectTopic':
         return <ObjectTopic {...props} >{children}</ObjectTopic>
 
@@ -191,7 +207,9 @@ class EditorContainer extends Component{
 
   updateDimensions() {
     let tH = $(".headerBar").outerHeight()
-    this.container.style.height = ( window.innerHeight - tH) + "px";
+    if(this.container){
+      this.container.style.height = ( window.innerHeight - tH) + "px";
+    }
   }
 
   componentDidMount(){
@@ -207,6 +225,9 @@ class EditorContainer extends Component{
     window.removeEventListener("resize", this.updateDimensions.bind(this));
   }
 
+
+
+
   render() {
     const containerStyle = {
       overflowY: 'scroll',
@@ -217,7 +238,9 @@ class EditorContainer extends Component{
     return (
       <div ref={div => { this.container = div}} className="container" style={containerStyle}>
         <Editor
-          placeholder="Enter some rich text..."
+          placeholder={"请输入标题..."}
+          //renderPlaceholder={renderPlaceholder}
+          schema={schema}
           value={this.props.state.value}
           onChange={this.onChange}
           onKeyDown={this.onKeyDown}

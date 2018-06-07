@@ -13,7 +13,8 @@ class EditArea extends Component {
       borderCollapse: 'collapse',
       border: 'solid 1px black',
       padding: '10px',
-      boxSizing: 'border-box'
+      boxSizing: 'border-box',
+      marginTop: '-1px'
     }
 
     return (

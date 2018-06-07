@@ -12,6 +12,7 @@ class HandWrite extends Component {
     const { children } = this.props
 
     const handStyle = {
+      fontWeight: 'bold'
     }
 
     return (
