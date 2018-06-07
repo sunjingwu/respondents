@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import {Value} from 'slate'
-import {message, Button, Layout, Tabs, BackTop, Modal} from 'antd';
+import {message, Button, Layout, Tabs, BackTop, Modal, Icon} from 'antd';
 
 import './App.css';
 import EditorContainer from "./components/editorContainer";
@@ -65,6 +65,9 @@ class App extends Component {
       descValue = SheetService.getSheetDesc(sheetId)
       slateValue = Value.fromJSON(doc);
     }
+
+
+    // 把docCtrl 挂在到window 上方便调用
 
     this.state = {
       //答题卡中题目的答案信息，主要用于手阅卡：客观题、填空题等，需考虑到大题带小题、一题多空等情况
@@ -191,7 +194,7 @@ class App extends Component {
     //保存预览复制等处理
     const operations = (
       <div>
-        <Button type="primary" onMouseUp={this.onClickSave}>保存1</Button>
+        <Button style={{margin:'0px 10px'}} type="primary" onMouseUp={this.onClickSave}>保存1</Button>
         <Button type="primary" onMouseUp={this.onClickSave}>保存</Button>
       </div>
     );
@@ -206,24 +209,32 @@ class App extends Component {
 
             <Tabs tabBarExtraContent={operations}>
               <TabPane tab="设置" key="0">
-                <span>页面设置</span>
-                <span>批改模式</span>
-                <span>考号板式</span>
-                <span>题目排序方式</span>
-                <span>客观题布局方式</span>
-                <span>0.5分支持</span>
+                <span className={'funcBtn'}>页面设置</span>
+                <span className={'funcBtn'}>批改模式</span>
+                <span className={'funcBtn'}>考号板式</span>
+                <span className={'funcBtn'}>题目排序方式</span>
+                <span className={'funcBtn'}>客观题布局方式</span>
+                <span className={'funcBtn'}>0.5分支持</span>
               </TabPane>
 
               <TabPane tab="开始" key="1">
                 <Toolbar editorChange={this.onChange} state={this.state}/>
               </TabPane>
               <TabPane tab="插入" key="2">
-                <Button type="primary" onMouseUp={this.insertSubject}>主观题</Button>
+                <Button.Group>
+                  <Button>
+                    <Icon type="left" />Backward
+                  </Button>
+                  <Button>
+                    Forward<Icon type="right" />
+                  </Button>
+                </Button.Group>
+                <Button icon="search" onMouseUp={this.insertSubject}>主观题</Button>
               </TabPane>
               <TabPane tab="视图" key="3">
-                <span>缺考标记</span>
-                <span>禁止作答区</span>
-                <span>密封线</span>
+                <span className={'funcBtn'}>缺考标记</span>
+                <span className={'funcBtn'}>禁止作答区</span>
+                <span className={'funcBtn'}>密封线</span>
               </TabPane>
             </Tabs>
 

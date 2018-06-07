@@ -26,3 +26,9 @@ input:focus {
 .ant-tabs-extra-content {
   margin-right: 10px;
 }
+
+
+.funcBtn {
+  display: inline-block;
+  margin: 0 10px;
+}

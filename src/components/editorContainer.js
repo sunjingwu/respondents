@@ -122,7 +122,7 @@ class EditorContainer extends Component{
         const topicTitleStyle = {
           marginTop: '10px'
         }
-        return <div style={topicTitleStyle} >{children}</div>
+        return <div {...attributes} className={'topicTitle'} style={topicTitleStyle} >{children}</div>
       case 'objectTopic':
         return <ObjectTopic {...props} >{children}</ObjectTopic>
 

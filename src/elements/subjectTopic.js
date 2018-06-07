@@ -22,7 +22,7 @@ class SubjectTopic extends React.Component {
     const topicId = node.data.get("id")
 
     return (
-      <div tpid={topicId} {...attributes} className={'subjectTopic'}>
+      <div {...attributes} className={'subjectTopic'} tpid={topicId}>
         {isNaN(score) ? null : <ScoreBar score={score}/>}
         {children}
       </div>

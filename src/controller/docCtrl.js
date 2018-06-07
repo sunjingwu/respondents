@@ -1,6 +1,7 @@
 /**
  *
  * 文档控制器
+ * 处理SlateJS 的document 工具
  *
  * @class
  * @public
@@ -11,11 +12,15 @@ import {Document, Text, Block, Value} from 'slate'
 
 export class DocCtrl {
 
+  /**
+   * 根据页面获取pageContent
+   * @param pageIndex
+   * @param value
+   */
+  static getPageContentbyIndex(pageIndex,value){
 
-  constructor(){
-    //
-    this.value = ""
   }
+
 
   /**
    * 初始化答题卡基本信息，除题目信息外的东西

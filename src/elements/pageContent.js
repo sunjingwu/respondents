@@ -2,18 +2,35 @@ import React, {Component} from 'react';
 import {Value} from 'slate'
 import {ASUtil} from "../utils/ASUtil";
 import * as PubSub from "pubsub-js";
+import {DocCtrl} from "../controller/docCtrl";
 
 /**
  * 页面，指一张纸的一面
  */
 class PageContent extends Component {
 
-  componentDidUpdate(params) {
+  componentDidUpdate() {
 
     const element = this.myRef
-    const pageHeight = this.props.parent.data.get('pageHeight')
+    const value = this.props.editor.state.value;
+    const parentNode = this.props.parent
+
+    const pageHeight = parentNode.data.get('pageHeight')
     //const pageMargin = node.data.get("pageMargin")
     const pageContentHeight = (pageHeight) * ASUtil.pxPerMm()
+    const currentPageIndex = parentNode.data.get("pageIndex")
+
+    //从第二页页面上获取第一个块的高度，与当前页剩余高度对比，如果可以放下，则移动。
+    const leftHeight = pageContentHeight - element.clientHeight;
+
+    //TODO 获取下一个元素的高度
+    // 1. 从value中获取下一个pageContent
+    DocCtrl.getPageContentbyIndex(currentPageIndex,value)
+    // 2. 从下一个pageContent 中 的block 获取第一个block的key
+    // 3. 根据key 从页面上获取对应html节点的高度
+
+
+    const nextBlockHeight = 0;
 
 
     if(element.clientHeight > pageContentHeight){
@@ -25,16 +42,26 @@ class PageContent extends Component {
 
 
       var val = this.props.editor.state.value.toJS()
-      const currentPageIndex = this.props.parent.data.get("pageIndex")
+
       const value = Value.fromJSON(val);
 
-      PubSub.publish('val', value);
+      PubSub.publish('val', value)
+    }
+
+    if(leftHeight >= nextBlockHeight){
+      //FIXME 当前页面有空余空间，需要把后面页面的内容放到前面
+      // 需要获取后面一页第一个元素的高度，与当前页剩余高度对比
+
+
+
+
+      //PubSub.publish('val', value)
     }
   }
 
   render() {
 
-    const { node } = this.props
+    const { node,children,attributes } = this.props
     var pageMargin = node.data.get('pageMargin')
 
     const pageStyle = {
@@ -42,8 +69,8 @@ class PageContent extends Component {
     }
 
     return (
-      <div ref={div => { this.myRef = div}} className="pageContent" style={pageStyle} {...this.props.attributes}>
-        {this.props.children}
+      <div ref={div => { this.myRef = div}} className="pageContent" style={pageStyle} {...attributes}>
+        {children}
       </div>
     )
   }
