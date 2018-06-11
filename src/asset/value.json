@@ -1,6 +1,8 @@
 {
   "document": {
-    "data": {},
+    "data": {
+      "sheetId": "sheetId_uuid"
+    },
     "nodes": [
       {
         "object": "block",
@@ -271,20 +273,7 @@
               ]
             },
             "nodes": [
-              {
-                "object": "block",
-                "type": "lastCursor",
-                "nodes": [
-                  {
-                    "object": "text",
-                    "leaves": [
-                      {
-                        "text": "dddd"
-                      }
-                    ]
-                  }
-                ]
-              }
+
             ]
           }
         ]

@@ -29,41 +29,42 @@ export const Category = {
   /**
    * 单选题
    */
-  singleChoice: 'SingleChoice',
+  SINGLE_CHOICE: 'SingleChoice',
 
   /**
    * 多选题
    */
-  multiChoice: 'MultiChoice',
+  MULTI_CHOICE: 'MultiChoice',
 
   /**
    * 客观题
    */
-  object: 'Object',
+  OBJECT: 'Object',
 
   /**
    * 判断题
    */
-  judge: 'Judge',
+  JUDGE: 'Judge',
 
   /**
    * 填空题
    */
-  fill: 'FillBlank',
+  FILL: 'FillBlank',
 
   /**
    * 解答题
    */
-  subjective: 'AnswerQuestion',
+  SUBJECTIVE: 'AnswerQuestion',
 
   /**
    * 作文题
    */
-  composition: 'Composition',
+  COMPOSITION: 'Composition',
+
   /**
    * 英语作文题
    */
-  englishComposition: 'EnglishComposition'
+  ENGLISH_COMPOSITION: 'EnglishComposition'
 
 };
 

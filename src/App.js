@@ -38,9 +38,14 @@ class App extends Component {
 
       }
 
-      //根据答题卡默认配置，生成默认的value
+
+      //初始化答题卡描述
+      descValue = DescCtrl.init();
+
+      //FIXME 根据答题卡默认配置，生成默认的value
       slateValue = Value.fromJSON(defaultValue);
       //slateValue = DocCtrl.initFromDefault();
+
 
       if(window.location.pathname === '/genSheet'){
         //判断是否已经存在对应试卷的答题卡，如果存在的话需要对比结构是否变化，结构发生变化时需重新生成答题卡
@@ -54,9 +59,6 @@ class App extends Component {
 
       }
 
-
-      //descValue 在页面变动时从doc 生成
-
     } else {
       //二次加载
       const sheetId = ASUtil.GetQueryString('sheetId')
@@ -67,7 +69,9 @@ class App extends Component {
     }
 
 
-    // 把docCtrl 挂在到window 上方便调用
+    // 补齐页面
+    //DocCtrl.completePages()
+
 
     this.state = {
       //答题卡中题目的答案信息，主要用于手阅卡：客观题、填空题等，需考虑到大题带小题、一题多空等情况

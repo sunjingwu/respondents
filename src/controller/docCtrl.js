@@ -3,11 +3,14 @@
  * 文档控制器
  * 处理SlateJS 的document 工具
  *
+ * 读取类的：返回对应的object
+ * 更新类的：返回新的value
  * @class
  * @public
  */
 import {ASConfig} from "../desc/asConfig";
 import {Document, Text, Block, Value} from 'slate'
+import {PageType} from "../desc/sheetDesc/sheetEnum";
 
 
 export class DocCtrl {
@@ -17,10 +20,48 @@ export class DocCtrl {
    * @param pageIndex
    * @param value
    */
-  static getPageContentbyIndex(pageIndex,value){
+  static getPageContentByIndex(pageIndex,document){
+    let pageList = document.get("nodes")
 
+    var page = pageList.find((p)=>{
+      return p.get('data').get('pageIndex') === pageIndex
+    })
+
+    var pageNodes = page.get('nodes')
+
+    return pageNodes.find((pn)=>{
+      return pn.get('type') == 'pageContent'
+    })
   }
 
+
+  /**
+   * 从页面中获取第一个块的key
+   * 第一个块：
+   * 1.客观题
+   * 2.填空题、英语作文题
+   * 3.语文作文题
+   * 4.解答题、题干区域等
+   * 5.答题卡头部
+   * @param pageContent
+   */
+  static getFirstBlockKey(pageContent){
+    var firstBlock = pageContent.get("nodes").get(0)
+
+    return firstBlock.get('key')
+  }
+
+  /**
+   * 获取页面数
+   */
+  static getPageCount(document) {
+    let nodeList = document.get("nodes")
+    let pageList = nodeList.filter((block)=>{
+      return block.get('type') == 'page'
+    })
+
+    return pageList.size;
+  }
 
   /**
    * 初始化答题卡基本信息，除题目信息外的东西
@@ -113,10 +154,8 @@ export class DocCtrl {
   /**
    * 设置纸张类型
    */
-  setPageType(pageType){
+  setPageType(value,pageType){
     //获取所有的page,设置纸张大小
-
-
 
 
   }
@@ -138,46 +177,106 @@ export class DocCtrl {
   }
 
 
-
-
-
   /**
-   * 获取当前页面内容的的最后一个block，用于跨页
+   * 生成新的页面:创建新的页面，指的是新的一栏
+   * @param pageType
    */
-  getLastBlock(pageIndex){
-    var page = this.getPage(pageIndex);
+  static createPage(pageType,pageIndex){
 
-    var pageContent = this.getPageContent(page);
+    let page = Block.create({
+      type: "page",
+      data: {
+        "pageIndex": pageIndex,
+        "pageType": pageType.name,
+        "pageWidth":pageType.width / pageType.colCount,
+        "pageHeight":pageType.height,
+      },
+      nodes: [
+        Block.create({
+          type: "pageContent",
+          data: {
+            "pageMargin":ASConfig.defaultPageMargin
+          },
+          nodes: [
+            //多页的话需要
+            /*Block.create({
+              type: "sheetHeader",
+              data: {
+                "studentInfo": "studyNo",
+                "studyNoCount": 8,
+                "studentType": [],
+                "displayAB": false,
+                "displayABPaper": false,
+                "displayAbsent": false
+              },
+              nodes: [
+                Block.create({
+                  type: "sheetTitle",
+                  nodes: [
+                    Text.create("Some text sheetTitle.")
+                  ]
+                }),
+                Block.create({
+                  type: "handWrite",
+                  nodes: [
+                    Block.create({
+                      type: 'paragraph',
+                      nodes: [
+                        Text.create("Some text handWrite.")
+                      ]
+                    })
+                  ]
+                }),
+                Block.create({
+                  type: "caution",
+                  nodes: [
+                    Block.create({
+                      type: 'paragraph',
+                      nodes: [
+                        Text.create("3．非选择题部分请按题号用0.5毫米黑色墨水签字笔书写，否则作答无效。要求字体工整、笔迹清晰。作图时，必须用2B铅笔，并描浓。.")
+                      ]
+                    })
+                  ]
+                })
+              ]
+            })*/
+          ]
+        })
+      ]
+    })
 
-
-
-
-  }
-
-
-
-  /**
-   * 题目跨页生成第二部分
-   */
-  genNextPart(){
-
-  }
-
-
-  /**
-   * 创建新的页面，指的是新的一栏
-   * @param pageIndex
-   */
-  createPage(pageIndex){
-
+    return page
   }
 
 
   /**
    * 补齐页面，用于A3两栏或三栏场景
+   *
+   * @param document
+   * @param pageType
    */
-  complatePages(){
+  static completePages(value, pageType) {
+    let needAddPageCount//需要添加的页面数量
+    let pageCount = DocCtrl.getPageCount(value.get("document"));
+    switch (pageType.name) {
+      case PageType.A3_2.name:
+        needAddPageCount = pageCount % PageType.A3_2.colCount;
 
+      case PageType.A3_3.name:
+        needAddPageCount = pageCount % PageType.A3_3.colCount;
+
+      default:
+        needAddPageCount = 0;
+    }
+
+    //生成页面到document中
+    for (let i = 0; i < needAddPageCount; i++) {
+      let newPage = DocCtrl.createPage(pageType, pageCount);
+
+    }
+
+
+    return value;
   }
 
 
@@ -186,28 +285,9 @@ export class DocCtrl {
    * @param pageIndex 页面索引
    * @public
    */
-  getPage(pageIndex){
+  static getPage(pageIndex){
 
   }
-
-  /**
-   * 获取页面内容部分
-   * @param page
-   */
-  getPageContent(page){
-
-
-
-
-
-  }
-
-
-
-
-
-
-
 
 
 

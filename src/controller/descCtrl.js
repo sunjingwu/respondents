@@ -8,11 +8,6 @@ import $ from 'jquery';
 export class DescCtrl {
 
 
-  constructor(desc){
-    this.sheetDesc = desc
-  }
-
-
   /**
    * 根据slate 的 value 的document属性生成答题卡描述
    *
