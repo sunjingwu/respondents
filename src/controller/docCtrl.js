@@ -11,6 +11,7 @@
 import {ASConfig} from "../desc/asConfig";
 import {Document, Text, Block, Value} from 'slate'
 import {PageType} from "../desc/sheetDesc/sheetEnum";
+import {SHEET_HEADER} from "../desc/docDesc/blockType";
 
 
 export class DocCtrl {
@@ -20,7 +21,8 @@ export class DocCtrl {
    * @param pageIndex
    * @param value
    */
-  static getPageContentByIndex(pageIndex,document){
+  static getPageContentByIndex(pageIndex,value){
+    let document = value.get('document')
     let pageList = document.get("nodes")
 
     var page = pageList.find((p)=>{
@@ -36,25 +38,25 @@ export class DocCtrl {
 
 
   /**
-   * 从页面中获取第一个块的key
-   * 第一个块：
-   * 1.客观题
-   * 2.填空题、英语作文题
-   * 3.语文作文题
-   * 4.解答题、题干区域等
-   * 5.答题卡头部
-   * @param pageContent
+   * 获取页面上可以移动的第一个block
+   * @param pageIndex
+   * @param value
+   * @returns {undefined}
    */
-  static getFirstBlockKey(pageContent){
-    var firstBlock = pageContent.get("nodes").get(0)
+  static getFirstFlexibleBlock(pageIndex,value){
+    let nextPageContent = DocCtrl.getPageContentByIndex(pageIndex,value)
 
-    return firstBlock.get('key')
+    let contentBlockList = nextPageContent.get("nodes")
+    return contentBlockList.find(block=>{
+      return block.get("type") !== SHEET_HEADER
+    })
   }
 
   /**
    * 获取页面数
    */
-  static getPageCount(document) {
+  static getPageCount(value) {
+    let document = value.get('document')
     let nodeList = document.get("nodes")
     let pageList = nodeList.filter((block)=>{
       return block.get('type') == 'page'

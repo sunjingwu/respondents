@@ -13,7 +13,7 @@ export class DescCtrl {
    *
    * @param doc 页面Value
    */
-  genSheetDesc(slateValue){
+  genSheetDesc(slateValue) {
 
     //从第一页获取答题卡的标题，考生信息等
     let sheetName = $(".sheetTitle").text()// document.getElementsByClassName('sheetTitle')
@@ -22,22 +22,25 @@ export class DescCtrl {
     //TODO 题目信息、排版、题目等信息
 
 
-
     this.sheetDesc = desc;
   }
 
 
   /**
-   * 生成答题卡基本描述信息
+   * 生成答题卡基本描述信息,从默认配置中
    */
-  genBaseDesc(){
+  static init(sheetName) {
 
+    let asDesc = new SheetDesc(sheetName);
+
+
+    return asDesc;
   }
 
   /**
    * 生成题目描述信息
    */
-  genTopicDesc(){
+  genTopicDesc() {
 
   }
 
@@ -46,33 +49,33 @@ export class DescCtrl {
    * 判断对应试卷的试题结构，与已经存在的答题卡题目结构是否相同
    * 可能需要比较的内容有：题目数量、对应题号的题型、选项个数
    */
-  isTopicSame(){
+  isTopicSame() {
 
   }
 
   /**
    * 组卷或划题，初始化答题卡
    */
-  initFormDesc(){
+  initFormDesc() {
 
   }
 
-  getPageType () {
+  getPageType() {
     return this.sheetDesc.pageType;
   }
+
   /**
    * 设置试卷类型
    */
-  setPageType (type) {
+  setPageType(type) {
     this.sheetDesc.pageType = type;
   }
-
 
 
   /**
    * 添加题型
    */
-  addTopicType(){
+  addTopicType() {
 
   }
 
@@ -80,19 +83,19 @@ export class DescCtrl {
   /**
    * 题型中添加题目
    */
-  addTopic(){
+  addTopic() {
 
   }
 
 
-  removeTopicType(){
+  removeTopicType() {
 
   }
 
   /**
    * 移除题目
    */
-  removeTopic(){
+  removeTopic() {
     // 如果题型中没有题目了，则清除该题型
   }
 

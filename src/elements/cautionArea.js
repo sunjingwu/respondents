@@ -19,11 +19,13 @@ class CautionArea extends Component {
       margin: "1mm",
       marginLeft: '0px',
       width: width+'mm',
+      fontSize: '12px',
       float: 'left'
     }
 
     const headStyle = {
       textAlign: 'center',
+      fontSize: '14px',
       fontWeight: 'bold'
     }
 

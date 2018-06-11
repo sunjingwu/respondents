@@ -17,6 +17,8 @@ class StudyNo extends Component {
       cursor: 'pointer',
       display: "inline-block",
       float: 'right',
+      fontSize: '12px',
+      fontFamily: 'SimSun,STSong',
       margin: '1mm'
     }
 
@@ -28,6 +30,7 @@ class StudyNo extends Component {
 
     const titleStyle = {
       width: '30mm',
+      height: '6mm',
       borderCollapse: 'collapse',
       border: 'solid 1px black',
       textAlign: 'center'
@@ -57,6 +60,7 @@ class StudyNo extends Component {
     const thStyle = {
       border: 'solid 1px #000000',
       borderCollapse: 'collapse',
+      width: '30px'
     }
 
     var rows = [];

@@ -38,9 +38,10 @@ class App extends Component {
 
       }
 
+      let sheetName = ASUtil.GetQueryString('sheetName')
 
       //初始化答题卡描述
-      descValue = DescCtrl.init();
+      descValue = DescCtrl.init(sheetName);
 
       //FIXME 根据答题卡默认配置，生成默认的value
       slateValue = Value.fromJSON(defaultValue);
