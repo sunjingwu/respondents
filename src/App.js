@@ -174,6 +174,8 @@ class App extends Component {
    **/
   insertSubject = () => {
 
+
+
     //根据窗口输入信息，生成block
 
     //插入到最后一个题目后面
@@ -256,17 +258,6 @@ class App extends Component {
           </Layout>
 
         </Layout>
-
-        <Modal
-          title="Basic Modal"
-          visible={this.state.visible}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-        >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-        </Modal>
       </div>
     )
   }

@@ -16,6 +16,25 @@ import {SHEET_HEADER} from "../desc/docDesc/blockType";
 
 export class DocCtrl {
 
+
+  /**
+   * 页面内容向前移动后，删除多余的一页；
+   * TODO A3纸张，需要考虑页面补全的场景
+   * @param value
+   */
+  static delEndPage(value){
+
+    let document = value.get('document');
+
+    let endPage = document.get('nodes').get(-1)
+
+    let pageKey = endPage.get('key')
+
+    let change = value.change().removeNodeByKey(pageKey)
+
+    return change.value;
+  }
+
   /**
    * 根据页面获取pageContent
    * @param pageIndex
@@ -162,42 +181,32 @@ export class DocCtrl {
 
   }
 
-  /**
-   * 设置答题卡模式
-   */
-  setSheetMode(){
-
-  }
-
-  setSheetName(){
-
-  }
-
-
-  setStudentInfo(){
-
-  }
-
 
   /**
    * 生成新的页面:创建新的页面，指的是新的一栏
+   * TODO 多页、自动补全
    * @param pageType
    */
-  static createPage(pageType,pageIndex){
+  static createPage(value){
+
+    let lastPage = value.get('document').get('nodes').get(-1)
+    let pageData = lastPage.get('data');
+
+    // 多页的场景需要生成：sheetHeader
 
     let page = Block.create({
       type: "page",
       data: {
-        "pageIndex": pageIndex,
-        "pageType": pageType.name,
-        "pageWidth":pageType.width / pageType.colCount,
-        "pageHeight":pageType.height,
+        pageIndex: pageData.get('pageIndex') + 1,
+        pageType: pageData.get('pageType'),
+        pageWidth: pageData.get('pageWidth'),
+        pageHeight: pageData.get('pageHeight'),
       },
       nodes: [
         Block.create({
           type: "pageContent",
           data: {
-            "pageMargin":ASConfig.defaultPageMargin
+            pageMargin: ASConfig.defaultPageMargin
           },
           nodes: [
             //多页的话需要
@@ -247,7 +256,14 @@ export class DocCtrl {
       ]
     })
 
-    return page
+
+    let insertIndex = value.get('document').get('nodes').size;
+
+    let insertKey = value.get('document').get('key')
+
+    let change = value.change().insertNodeByKey(insertKey,insertIndex,page)
+
+    return change.value;
   }
 
 
@@ -292,5 +308,29 @@ export class DocCtrl {
   }
 
 
+
+  //处理页面，跨页处理：
+  static correctPage(value){
+
+
+    //返回新的value
+  }
+
+
+  /**
+   * 设置答题卡模式
+   */
+  setSheetMode(){
+
+  }
+
+  setSheetName(){
+
+  }
+
+
+  setStudentInfo(){
+
+  }
 
 }

@@ -120,7 +120,7 @@ class EditorContainer extends Component{
 
       case 'topicTitle':
         const topicTitleStyle = {
-          marginTop: '10px'
+          paddingTop: '10px'
         }
         return <div {...attributes} className={'topicTitle'} style={topicTitleStyle} >{children}</div>
       case 'objectTopic':
@@ -212,10 +212,21 @@ class EditorContainer extends Component{
     }
   }
 
+
+  componentDidUpdate(){
+
+    // 跨页处理页面
+  }
+
+
   componentDidMount(){
     //设置高度满屏：获取视窗高度，减去头部高度
     this.updateDimensions()
     window.addEventListener("resize", this.updateDimensions.bind(this));
+
+
+    // 跨页处理跨页
+
   }
 
   /**
