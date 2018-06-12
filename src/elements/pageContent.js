@@ -94,10 +94,13 @@ class PageContent extends Component {
       const leftHeight = pageContentHeight - element.clientHeight;
       if (leftHeight >= nextBlockHeight) {
         // 当前页面有空余空间，需要把后面页面的内容放到前面
-
-
         var change = value.change()
-        change.removeNodeByKey(firstKey);
+
+        //后一页放到前面
+        let prePageContent = DocCtrl.getPageContentByIndex(currentPageIndex,value);
+        let preKey = prePageContent.get('key')
+        let index = prePageContent.get('nodes').size
+        change.moveNodeByKey(firstKey,preKey,index);
 
 
         // 如果后面一页没有内容，且不需要补全页面的话，连同Page页面一同删除
@@ -106,9 +109,7 @@ class PageContent extends Component {
 
         PubSub.publish('val', newValue)
       }
-
     }
-
   }
 
   render() {

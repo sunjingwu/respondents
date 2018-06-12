@@ -91,9 +91,10 @@ class App extends Component {
   componentDidMount(){
     //通过PubSub库订阅一个信息，接收子组件的信息，用于分页分栏
     this.pubsub_token = PubSub.subscribe('val', function (topic, value) {
-      this.setState({
+      this.onChange({value})
+      /*this.setState({
         value: value
-      });
+      });*/
     }.bind(this));
 
   }
