@@ -1,3 +1,7 @@
 .logo{
     float: left;
+    width: 84px;
+    height: 84px;
+    text-align: center;
+    cursor: pointer;
 }

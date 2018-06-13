@@ -1,24 +1,23 @@
 
 import React, {Component} from 'react';
 
-import logo from '../../asset/logo.svg'
-
 import './logo.css'
 import {Icon} from "antd";
+
+const url = '//www.eiduo.com'
 
 class Logo extends Component{
 
 
+  gotoUrl = () => {
+    window.open(url);
+  }
+
+
   render() {
 
-    const logoStyle = {
-      width: '84px',
-      height: '84px',
-      textAlign: 'center'
-    }
-
     return (
-      <div style={logoStyle} className="logo">
+      <div onMouseUp={this.gotoUrl} className="logo">
 
         <Icon type="menu-fold" style={{lineHeight:'84px', fontSize: '46px', color: '#08c' }}/>
 

@@ -13,7 +13,11 @@ export const ASConfig = {
   defaultPageMargin: [20,15,20,15],//默认页边距 mm
 
   gap: '8px',//题目之间的间隙高度
-  paddingSize: '10px' //题目边框内边距
+  paddingSize: '10px', //题目边框内边距
 
 
+  gridWidth: 7.5,//语文作文格子宽
+  gridHeight: 8,//语文作文格子高
+
+  objectRowCount: 5//客观题小块中布局的行数
 }

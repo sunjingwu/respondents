@@ -21,8 +21,12 @@ class SubjectTopic extends React.Component {
     const score = node.data.get("score")
     const topicId = node.data.get("id")
 
+    const containerStyle = {
+      border: 'solid 1px black'
+    }
+
     return (
-      <div {...attributes} className={'subjectTopic'} tpid={topicId}>
+      <div {...attributes} className={'subjectTopic'} style={containerStyle} tpid={topicId}>
         {isNaN(score) ? null : <ScoreBar score={score}/>}
         {children}
       </div>

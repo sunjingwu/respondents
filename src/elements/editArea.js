@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {ASConfig} from "../desc/asConfig";
 
 
 /**
@@ -11,8 +12,7 @@ class EditArea extends Component {
     const answerAreaStyle = {
       width: '100%',
       borderCollapse: 'collapse',
-      border: 'solid 1px black',
-      padding: '10px',
+      padding: ASConfig.paddingSize,
       boxSizing: 'border-box',
       marginTop: '-1px'
     }
