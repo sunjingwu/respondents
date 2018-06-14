@@ -1,6 +1,6 @@
 import React from 'react'
 import ScoreBar from "./scoreBar";
-import GridArea from "./gridArea";
+import GridArea from "./cnComposition/gridArea";
 
 /**
  * 主观题 component.

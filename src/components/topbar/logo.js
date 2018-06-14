@@ -10,7 +10,8 @@ class Logo extends Component{
 
 
   gotoUrl = () => {
-    window.open(url);
+    window.location.href = url
+    //window.open(url);
   }
 
 
